@@ -1,16 +1,32 @@
 import {Component} from '@angular/core';
-import {NavController} from 'ionic-angular';
+import {Alert, NavController} from 'ionic-angular';
 import {ScientificFactsPage} from '../scientific-facts-page/scientific-facts-page';
 
 @Component({
   templateUrl: 'build/pages/getting-started/getting-started.html'
 })
+
 export class GettingStartedPage {
 
-  constructor(private _navController:NavController) {
+  static get parameters() {
+    return [NavController];
   }
 
-  goToFactsPage(){
-    this._navController.push(ScientificFactsPage);
+  constructor(public nav: NavController) {
+
+  }
+
+  showAlert() {
+    let alert = Alert.create({
+      title: 'Hello',
+      message: 'Hi there!',
+      buttons: ['Ok']
+    });
+
+    this.nav.present(alert);
+  }
+
+  goToFactsPage() {
+    this.nav.push(ScientificFactsPage);
   }
 }
