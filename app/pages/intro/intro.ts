@@ -1,4 +1,6 @@
 import {Component} from '@angular/core';
+import {NavController} from 'ionic-angular';
+import {MainPage} from '../main/main';
 
 @Component({
     templateUrl: './build/pages/intro/intro.html'
@@ -23,5 +25,13 @@ export class IntroPage {
       image: "img/ica-slidebox-img-3.png"
     }
   ];
+
+  constructor(public nav: NavController) {
+    this.nav = nav;
+  }
+
+  goMainPage() {
+    this.nav.setRoot(MainPage);
+  }
 
 }

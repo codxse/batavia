@@ -1,5 +1,5 @@
 <ion-navbar *navbar hideBackButton class="show-navbar">
-  <ion-title>Slides</ion-title>
+  <ion-title>Perkenalan</ion-title>
 </ion-navbar>
 <ion-content class="tutorial-page">
   <ion-slides pager>
@@ -7,7 +7,7 @@
     <ion-slide *ngFor="let slide of slides">
       <ion-toolbar>
         <ion-buttons end>
-          <button>Skip</button>
+          <button (click)="goMainPage()">Skip</button>
         </ion-buttons>
       </ion-toolbar>
       <img [src]="slide.image" class="slide-image"/>
@@ -20,7 +20,7 @@
       </ion-toolbar>
       <img src="img/ica-slidebox-img-4.png" class="slide-image"/>
       <h2 class="slide-title">Ready to Play?</h2>
-      <button large clear>
+      <button large clear (click)="goMainPage()">
         Continue
         <ion-icon name="arrow-forward"></ion-icon>
       </button>

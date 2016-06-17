@@ -10,6 +10,12 @@ import {NavController} from 'ionic-angular';
 @Component({
   templateUrl: 'build/pages/main/main.html',
 })
+
 export class MainPage {
-  constructor(public nav: NavController) {}
+
+  constructor(public nav: NavController) {
+    this.nav = nav;
+  }
+
+  
 }
