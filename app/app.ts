@@ -5,6 +5,7 @@ import {GettingStartedPage} from './pages/getting-started/getting-started';
 import {ListPage} from './pages/list/list';
 import {IntroPage} from './pages/intro/intro';
 import {MainPage} from './pages/main/main';
+import {CreditPage} from './pages/credit/credit';
 
 
 @Component({
@@ -15,7 +16,7 @@ class MyApp {
   @ViewChild(Nav) nav: Nav;
 
   rootPage: any = MainPage;
-  pages: Array<{title: string, component: any}>
+  pages: Array<{title: string, component: any, icon: string}>
 
   constructor(private platform: Platform) {
     this.initializeApp();
@@ -23,10 +24,13 @@ class MyApp {
 
     // used for an example of ngFor and navigation
     this.pages = [
-      { title: 'Beranda', component: MainPage },
-      { title: 'Getting Started', component: GettingStartedPage },
-      { title: 'List', component: ListPage },
-      { title: 'Perkenalan', component: IntroPage }
+      { title: 'Beranda', component: MainPage, icon: 'home' },
+      { title: 'Topik Ekonomi Makro', component: MainPage, icon: 'globe' },
+      { title: 'Topik Ekonomi Mikro', component: MainPage, icon: 'pizza' },
+      { title: 'Kredit', component: CreditPage, icon: 'paper' },
+      { title: 'Perkenalan', component: IntroPage, icon: 'megaphone' },
+      { title: 'Getting Started', component: GettingStartedPage, icon: 'home' },
+      { title: 'List', component: ListPage, icon: 'home' }
     ];
 
   }
