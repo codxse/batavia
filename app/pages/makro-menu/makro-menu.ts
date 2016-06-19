@@ -1,13 +1,13 @@
 import {Component} from '@angular/core';
 import {NavController} from 'ionic-angular';
 import {IkhtisarStatistikPage} from '../ikhtisar-statistik/ikhtisar-statistik';
+import {UpahMinimumProvinsiPage} from '../upah-minimum-provinsi/upah-minimum-provinsi';
+import {PertumbuhanEkonomiPage} from '../pertumbuhan-ekonomi/pertumbuhan-ekonomi';
+import {TingkatInflasiPage} from '../tingkat-inflasi/tingkat-inflasi';
+import {KomponenInflasiPage} from '../komponen-inflasi/komponen-inflasi';
+import {StrukturEkonomiPage} from '../struktur-ekonomi/struktur-ekonomi';
+import {PendapatanPerkapitaPage} from '../pendapatan-perkapita/pendapatan-perkapita';
 
-/*
-  Generated class for the MakroMenuPage page.
-
-  See http://ionicframework.com/docs/v2/components/#navigation for more info on
-  Ionic pages and navigation.
-*/
 @Component({
   templateUrl: 'build/pages/makro-menu/makro-menu.html',
 })
@@ -29,42 +29,42 @@ export class MakroMenuPage {
       },
       {
         title: 'Upah Minimum Provinsi',
-        component: IkhtisarStatistikPage,
+        component: UpahMinimumProvinsiPage,
         category: 'Ketenaga Kerjaan',
         data: 2,
         image: 'home'
       },
       {
         title: 'Pertumbuhan Ekonomi',
-        component: IkhtisarStatistikPage,
+        component: PertumbuhanEkonomiPage,
         category: 'Perekonomian',
         data: 3,
         image: 'home'
       },
       {
         title: 'Tingkat Inflasi',
-        component: IkhtisarStatistikPage,
+        component: TingkatInflasiPage,
         category: 'Perekonomian',
         data: 4,
         image: 'home'
       },
       {
         title: 'Komponen Inflasi',
-        component: IkhtisarStatistikPage,
+        component: KomponenInflasiPage,
         category: 'Perekonomian',
         data: 5,
         image: 'home'
       },
       {
         title: 'Struktur Ekonomi',
-        component: IkhtisarStatistikPage,
+        component: StrukturEkonomiPage,
         category: 'Perekonomian',
         data: 9,
         image: 'home'
       },
       {
         title: 'Pendapatan Perkapita',
-        component: IkhtisarStatistikPage,
+        component: PendapatanPerkapitaPage,
         category: 'Pendapatan Perkapita',
         data: 13,
         image: 'home'

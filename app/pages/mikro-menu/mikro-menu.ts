@@ -1,6 +1,11 @@
 import {Component} from '@angular/core';
 import {NavController} from 'ionic-angular';
 import {EksporDanImporPage} from '../ekspor-dan-impor/ekspor-dan-impor';
+import {VolumeDanNilaiEksporPage} from '../volume-dan-nilai-ekspor/volume-dan-nilai-ekspor';
+import {NilaiImporProdukPage} from '../nilai-impor-produk/nilai-impor-produk';
+import {HargaPanganKonsumenPage} from '../harga-pangan-konsumen/harga-pangan-konsumen';
+import {HargaGrosirDiPasarIndukPage} from '../harga-grosir-di-pasar-induk/harga-grosir-di-pasar-induk';
+import {RealisasiApbdPage} from '../realisasi-apbd/realisasi-apbd';
 
 @Component({
   templateUrl: 'build/pages/mikro-menu/mikro-menu.html',
@@ -15,43 +20,43 @@ export class MikroMenuPage {
 
     this.pages = [
       {
-        title: 'Ekspor dan Impor Jakarta',
+        title: 'Ekspor dan Impor',
         component: EksporDanImporPage,
         category: 'Ekspor Impor',
         data: 6,
         image: 'home'
       },
       {
-        title: 'Volume dan Nilai Ekspor',
-        component: EksporDanImporPage,
+        title: 'Volume & Nilai Ekspor',
+        component: VolumeDanNilaiEksporPage,
         category: 'Ekspor Impor',
         data: 7,
         image: 'home'
       },
       {
         title: 'Nilai Impor Produk',
-        component: EksporDanImporPage,
+        component: NilaiImporProdukPage,
         category: 'Ekspor Impor',
         data: 8,
         image: 'home'
       },
       {
         title: 'Harga Pangan Konsumen',
-        component: EksporDanImporPage,
+        component: HargaPanganKonsumenPage,
         category: 'Komoditas',
         data: 10,
         image: 'home'
       },
       {
         title: 'Harga Grosir di Pasar Induk',
-        component: EksporDanImporPage,
+        component: HargaGrosirDiPasarIndukPage,
         category: 'Komoditas',
         data: 11,
         image: 'home'
       },
       {
         title: 'Realisasi APBD',
-        component: EksporDanImporPage,
+        component: RealisasiApbdPage,
         category: 'APBD',
         data: 13,
         image: 'home'
