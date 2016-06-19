@@ -1,0 +1,20 @@
+<ion-navbar *navbar>
+  <button menuToggle>
+    <ion-icon name="menu"></ion-icon>
+  </button>
+  <ion-title>Beranda</ion-title>
+</ion-navbar>
+
+<ion-content padding class="main">
+  <div class="main-center">
+    <div class="main-middle">
+      <img src="img/statistics-icon.png" class="logo"/>
+      <button (click)="goToMakroMenuPage()" block large>
+        <ion-icon name="globe"></ion-icon> Topik Ekonomi Makro
+      </button>
+      <button (click)="goToMikroMenuPage()" block large>
+        <ion-icon name="pizza"></ion-icon> Topik Ekonomi Mikro
+      </button>
+  </div>
+  </div>
+</ion-content>

@@ -1,0 +1,21 @@
+<ion-navbar *navbar>
+  <button menuToggle>
+    <ion-icon name="menu"></ion-icon>
+  </button>
+  <ion-title>Topik Ekonomi Makro</ion-title>
+</ion-navbar>
+
+<ion-content>
+  <ion-list>
+
+    <ion-item *ngFor="let page of pages">
+      <ion-thumbnail item-left>
+        <img src="img/temp_patrick.png">
+      </ion-thumbnail>
+      <h2>{{page.title}}</h2>
+      <p>{{page.category}}</p>
+      <button clear item-right (click)="selectPage(page.component)">Buka</button>
+    </ion-item>
+
+  </ion-list>
+</ion-content>

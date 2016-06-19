@@ -3,24 +3,36 @@ import {App, ionicBootstrap, Platform, Nav} from 'ionic-angular';
 import {StatusBar} from 'ionic-native';
 import {GettingStartedPage} from './pages/getting-started/getting-started';
 import {ListPage} from './pages/list/list';
+import {IntroPage} from './pages/intro/intro';
+import {MainPage} from './pages/main/main';
+import {CreditPage} from './pages/credit/credit';
+import {MakroMenuPage} from './pages/makro-menu/makro-menu';
+import {MikroMenuPage} from './pages/mikro-menu/mikro-menu';
 
 
 @Component({
   templateUrl: 'build/app.html'
 })
+
 class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = GettingStartedPage;
-  pages: Array<{title: string, component: any}>
+  rootPage: any = MainPage;
+  pages: Array<{title: string, component: any, icon: string}>
 
   constructor(private platform: Platform) {
     this.initializeApp();
+    this.platform = platform;
 
     // used for an example of ngFor and navigation
     this.pages = [
-      { title: 'Getting Started', component: GettingStartedPage },
-      { title: 'List', component: ListPage }
+      { title: 'Beranda', component: MainPage, icon: 'home' },
+      { title: 'Topik Ekonomi Makro', component: MakroMenuPage, icon: 'globe' },
+      { title: 'Topik Ekonomi Mikro', component: MikroMenuPage, icon: 'pizza' },
+      { title: 'Kredit', component: CreditPage, icon: 'paper' },
+      { title: 'Perkenalan', component: IntroPage, icon: 'megaphone' },
+      { title: 'Getting Started', component: GettingStartedPage, icon: 'home' },
+      { title: 'List', component: ListPage, icon: 'home' }
     ];
 
   }
