@@ -1,5 +1,7 @@
 import {Component} from '@angular/core';
 import {NavController} from 'ionic-angular';
+import {MakroMenuPage} from '../makro-menu/makro-menu';
+import {MikroMenuPage} from '../mikro-menu/mikro-menu';
 
 /*
   Generated class for the MainPage page.
@@ -17,5 +19,12 @@ export class MainPage {
     this.nav = nav;
   }
 
-  
+  goToMakroMenuPage() {
+    this.nav.push(MakroMenuPage);
+  }
+
+  goToMikroMenuPage() {
+    this.nav.push(MikroMenuPage);
+  }
+
 }

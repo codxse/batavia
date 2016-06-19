@@ -6,6 +6,8 @@ import {ListPage} from './pages/list/list';
 import {IntroPage} from './pages/intro/intro';
 import {MainPage} from './pages/main/main';
 import {CreditPage} from './pages/credit/credit';
+import {MakroMenuPage} from './pages/makro-menu/makro-menu';
+import {MikroMenuPage} from './pages/mikro-menu/mikro-menu';
 
 
 @Component({
@@ -25,8 +27,8 @@ class MyApp {
     // used for an example of ngFor and navigation
     this.pages = [
       { title: 'Beranda', component: MainPage, icon: 'home' },
-      { title: 'Topik Ekonomi Makro', component: MainPage, icon: 'globe' },
-      { title: 'Topik Ekonomi Mikro', component: MainPage, icon: 'pizza' },
+      { title: 'Topik Ekonomi Makro', component: MakroMenuPage, icon: 'globe' },
+      { title: 'Topik Ekonomi Mikro', component: MikroMenuPage, icon: 'pizza' },
       { title: 'Kredit', component: CreditPage, icon: 'paper' },
       { title: 'Perkenalan', component: IntroPage, icon: 'megaphone' },
       { title: 'Getting Started', component: GettingStartedPage, icon: 'home' },

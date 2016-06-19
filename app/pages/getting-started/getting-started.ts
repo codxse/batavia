@@ -13,7 +13,7 @@ export class GettingStartedPage {
   }
 
   constructor(public nav: NavController) {
-
+    this.nav = nav;
   }
 
   showAlert() {
