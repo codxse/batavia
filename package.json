@@ -47,7 +47,7 @@
   "description": "Batavia: Mobile visualization for Jakarta's open data.",
   "repository": {
     "type": "git",
-    "url":  "git://github.com/codxse/batavia.git"
+    "url": "git://github.com/codxse/batavia.git"
   },
   "license": "MIT"
 }

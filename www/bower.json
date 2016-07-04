@@ -1,0 +1,22 @@
+{
+  "name": "batavia-view",
+  "homepage": "https://github.com/codxse/Batavia",
+  "authors": [
+    "Nadiar AS <codxse@gmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "libs",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "nvd3": "^1.8.4"
+  }
+}
