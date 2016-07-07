@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {NavController} from 'ionic-angular';
+import {DataService} from '../../providers/data-service/data-service';
 import {nvD3} from '../../ng2-nvd3';
 declare let d3: any;
 
@@ -18,7 +19,11 @@ export class IkhtisarStatistikPage {
   options;
   data;
 
-  constructor(public nav: NavController) {}
+  constructor(public nav: NavController, public dataService: DataService) {}
+
+  loadData() {
+    
+  }
 
   ngOnInit() {
     this.options = {
