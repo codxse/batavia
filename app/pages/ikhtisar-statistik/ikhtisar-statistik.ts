@@ -15,7 +15,7 @@ Ionic pages and navigation.
   directives: [nvD3],
   //providers: [DataService],
   providers: [IkhtisarKetenagaKerjaanService],
-  templateUrl: 'build/pages/ikhtisar-statistik/ikhtisar-statistik.html',
+  templateUrl: 'build/pages/ikhtisar-statistik/ikhtisar-statistik.html'
 })
 
 export class IkhtisarStatistikPage {
@@ -28,15 +28,6 @@ export class IkhtisarStatistikPage {
     this.arrObj = [];
     this.ikhtisarKetenagaKerjaanService.load()
     .then(data => {
-      let temp = [];
-      for (let key in data) {
-        let obj = {};
-        let values = [];
-        temp.push(data[key]);
-      }
-
-
-
       function genKeys(key, arrObj) {
         let flags = [], cats = [], l = arrObj.length, i;
         for (i=0; i<l; i++) {
@@ -47,14 +38,14 @@ export class IkhtisarStatistikPage {
         return cats;
       }
 
-      function genVals(keyCat, valCat, value, arrObj, dateKey) {
+      function genVals(keyCat, valCat, keyValue, arrObj, dateKey) {
         let values = [], l = arrObj.length, i;
         for (i=0; i<l; i++) {
           if (arrObj[i][keyCat] == valCat) {
             values.push(
               {
                 x: new Date(arrObj[i][dateKey]).getTime(),
-                y: arrObj[i][value]
+                y: arrObj[i][keyValue]
               }
             )
           }
@@ -62,42 +53,19 @@ export class IkhtisarStatistikPage {
         return values;
       }
 
-      function genData(arrObj) {
-        let categories = genKeys('rincian', arrObj)
-        return categories.map(function(data) {
+      function genData(keyCat, keyValue, arrObj, dateKey) {
+        let categories = genKeys(keyCat, arrObj)
+        return categories.map(function(item) {
           return {
-            key: data,
-            values: genVals('rincian', data, 'jumlah', arrObj, 'tahun')
+            key: item,
+            values: genVals(keyCat, item, keyValue, arrObj, dateKey)
           }
         });
       }
-      console.log(genData(temp))
-      this.data = genData(temp);
+
+      this.data = genData('rincian', 'jumlah', data, 'tahun');
     });
   }
-
-  // loadData() {
-  //   this.arrObj = [];
-  //   this.dataService.load()
-  //     .then(data => {
-  //       console.log('on loadData');
-  //       for (let key in data) {
-  //         let obj = {};
-  //         console.log(data[key]);
-  //         obj['label'] = data[key].kelas_interval;
-  //         obj['value'] = data[key].frekuensi;
-  //         this.arrObj.push(obj);
-  //       }
-  //       console.log(this.arrObj);
-  //       this.data = [
-  //         {
-  //           key: "Cumulative Return",
-  //           values: this.arrObj
-  //         }
-  //       ]
-  //       console.log(this.data);
-  //     });
-  // }
 
   ngOnInit() {
     this.options = {
@@ -128,7 +96,8 @@ export class IkhtisarStatistikPage {
           axisLabel: 'Tahun',
           tickFormat: function(d) {
             return d3.time.format('%Y')(new Date(d));
-          }
+          },
+          showMaxMin: false
         },
         yAxis: {
           axisLabel: 'Jiwa',
@@ -136,32 +105,13 @@ export class IkhtisarStatistikPage {
           tickFormat: function(d) {
             var prefix = d3.formatPrefix(d);
             return prefix.scale(d) + prefix.symbol;
-          }
+          },
+          showMaxMin: false
         },
         callback: function(chart){
           console.log("!!! lineChart callback !!!");
         }
       }
-      // title: {
-      //   enable: true,
-      //   text: 'Title for Line Chart'
-      // },
-      // subtitle: {
-      //   enable: true,
-      //   text: 'Subtitle for simple line chart. Lorem ipsum dolor sit amet, at eam blandit sadipscing, vim adhuc sanctus disputando ex, cu usu affert alienum urbanitas.',
-      //   css: {
-      //     'text-align': 'center',
-      //     'margin': '10px 13px 0px 7px'
-      //   }
-      // },
-      // caption: {
-      //   enable: true,
-      //   html: '<b>Figure 1.</b> Lorem ipsum dolor sit amet, at eam blandit sadipscing, <span style="text-decoration: underline;">vim adhuc sanctus disputando ex</span>, cu usu affert alienum urbanitas. <i>Cum in purto erat, mea ne nominavi persecuti reformidans.</i> Docendi blandit abhorreant ea has, minim tantas alterum pro eu. <span style="color: darkred;">Exerci graeci ad vix, elit tacimates ea duo</span>. Id mel eruditi fuisset. Stet vidit patrioque in pro, eum ex veri verterem abhorreant, id unum oportere intellegam nec<sup>[1, <a href="https://github.com/krispo/angular-nvd3" target="_blank">2</a>, 3]</sup>.',
-      //   css: {
-      //     'text-align': 'justify',
-      //     'margin': '10px 13px 0px 7px'
-      //   }
-      // }
     }
   }
 
