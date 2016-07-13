@@ -7,17 +7,18 @@ export class Options{
 
   constructor() {}
 
-  loadOptionLine() {
+  loadOptionLine(xAxisLabel, yAxisLabel) {
     return {
       chart: {
         type: 'lineChart',
         height: 600,
         margin : {
           top: 30,
-          right: 20,
+          right: 55,
           bottom: 300,
           left: 55
         },
+        showLegend: false,
         legendPosition: "bottom",
         x: function(d) {
           return new Date(d.x);
@@ -32,43 +33,29 @@ export class Options{
           tooltipHide: function(e){ console.log("tooltipHide"); }
         },
         xAxis: {
-          axisLabel: 'Tahun',
+          axisLabel: xAxisLabel,
           tickFormat: function(d) {
             return d3.time.format('%Y')(new Date(d));
-          }
+          },
+          showMaxMin: false
         },
         yAxis: {
-          axisLabel: 'Jiwa',
+          axisLabel: yAxisLabel,
           axisLabelDistance: -5,
           tickFormat: function(d) {
             var prefix = d3.formatPrefix(d);
             return prefix.scale(d) + prefix.symbol;
-          }
+          },
+          showMaxMin: false
         },
         callback: function(chart){
           console.log("!!! lineChart callback !!!");
         }
       }
-      // title: {
-      //   enable: true,
-      //   text: 'Title for Line Chart'
-      // },
-      // subtitle: {
-      //   enable: true,
-      //   text: 'Subtitle for simple line chart. Lorem ipsum dolor sit amet, at eam blandit sadipscing, vim adhuc sanctus disputando ex, cu usu affert alienum urbanitas.',
-      //   css: {
-      //     'text-align': 'center',
-      //     'margin': '10px 13px 0px 7px'
-      //   }
-      // },
-      // caption: {
-      //   enable: true,
-      //   html: '<b>Figure 1.</b> Lorem ipsum dolor sit amet, at eam blandit sadipscing, <span style="text-decoration: underline;">vim adhuc sanctus disputando ex</span>, cu usu affert alienum urbanitas. <i>Cum in purto erat, mea ne nominavi persecuti reformidans.</i> Docendi blandit abhorreant ea has, minim tantas alterum pro eu. <span style="color: darkred;">Exerci graeci ad vix, elit tacimates ea duo</span>. Id mel eruditi fuisset. Stet vidit patrioque in pro, eum ex veri verterem abhorreant, id unum oportere intellegam nec<sup>[1, <a href="https://github.com/krispo/angular-nvd3" target="_blank">2</a>, 3]</sup>.',
-      //   css: {
-      //     'text-align': 'justify',
-      //     'margin': '10px 13px 0px 7px'
-      //   }
-      // }
     }
+  }
+
+  loadOptionPie(xAxisLabel, yAxisLabel) {
+    return {}
   }
 }
