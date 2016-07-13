@@ -9,5 +9,23 @@
 </ion-navbar>
 
 <ion-content padding class="ikhtisar-statistik-pie">
-  
+  <ion-list>
+    <ion-item>
+      <ion-label>Kategori</ion-label>
+      <ion-select [(ngModel)]="kategori" (ngModelChange)="onChange($event, 'kategori')">
+        <ion-option value="lowongan">Lowongan</ion-option>
+        <ion-option value="pencari">Pencari</ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+    <ion-label>Tahun</ion-label>
+    <ion-select [(ngModel)]="tahun" (ngModelChange)="onChange($event, 'tahun')">
+      <ion-option *ngFor="let thn of tahunArr" value="{{thn}}">{{thn | date:'y'}}</ion-option>
+    </ion-select>
+  </ion-item>
+  </ion-list>
+  <div>
+    <nvd3 [options]="options" [data]="data"></nvd3>
+  </div>
+  <p>-{{kategori}}, -{{tahun}}</p>
 </ion-content>

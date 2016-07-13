@@ -1,7 +1,6 @@
 import {Component} from '@angular/core';
 import {NavController} from 'ionic-angular';
 import {IkhtisarStatistikTabPage} from '../ikhtisar-statistik-tab/ikhtisar-statistik-tab';
-import {IkhtisarStatistikPage} from '../ikhtisar-statistik/ikhtisar-statistik';
 import {UpahMinimumProvinsiPage} from '../upah-minimum-provinsi/upah-minimum-provinsi';
 import {PertumbuhanEkonomiPage} from '../pertumbuhan-ekonomi/pertumbuhan-ekonomi';
 import {TingkatInflasiPage} from '../tingkat-inflasi/tingkat-inflasi';

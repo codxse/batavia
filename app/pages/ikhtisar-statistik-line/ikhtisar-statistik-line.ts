@@ -17,7 +17,7 @@ Ionic pages and navigation.
   templateUrl: 'build/pages/ikhtisar-statistik-line/ikhtisar-statistik-line.html'
 })
 
-export class IkhtisarStatistikLinePage implements OnInit{
+export class IkhtisarStatistikLinePage{
   url = "https://api.kawaljakarta.org/v1/ikhtisar-statistik-antar-kerja/key=tahun&gd='2008'&ld='2014'";
   options;
   data;

@@ -3,6 +3,7 @@ import {NavController, NavParams} from 'ionic-angular';
 import {ViewController, Platform} from 'ionic-angular';
 import {IkhtisarStatistikPage} from '../ikhtisar-statistik/ikhtisar-statistik';
 import {IkhtisarStatistikLinePage} from '../ikhtisar-statistik-line/ikhtisar-statistik-line';
+import {IkhtisarStatistikPiePage} from '../ikhtisar-statistik-pie/ikhtisar-statistik-pie';
 
 @Component({
   template: `
@@ -32,5 +33,5 @@ class TabTextPage {
 `})
 export class IkhtisarStatistikTabPage {
   tabOne = IkhtisarStatistikLinePage;
-  tabTwo = TabTextPage;
+  tabTwo = IkhtisarStatistikPiePage;
 }
