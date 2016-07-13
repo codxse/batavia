@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {NavController} from 'ionic-angular';
 import {DataService} from '../../providers/data-service/data-service';
-import {IkhtisarKetenagaKerjaanService} from '../../providers/ikhtisar-ketenaga-kerjaan-service/ikhtisar-ketenaga-kerjaan-service';
 import {nvD3} from '../../ng2-nvd3';
 import {Options} from '../../providers/options';
 declare let d3: any;
@@ -15,7 +14,6 @@ Ionic pages and navigation.
 @Component({
   directives: [nvD3],
   providers: [DataService, Options],
-  //providers: [IkhtisarKetenagaKerjaanService],
   templateUrl: 'build/pages/ikhtisar-statistik-line/ikhtisar-statistik-line.html'
 })
 
