@@ -1,4 +1,4 @@
-import {Component, OnInit, OnChanges, Output, AfterViewInit, EventEmitter, ViewChild, NgZone} from '@angular/core';
+import {Component, OnInit, OnChanges, Output, AfterViewInit, EventEmitter, ViewChild} from '@angular/core';
 import {NavController} from 'ionic-angular';
 import {DataService} from '../../providers/data-service/data-service';
 import {nvD3} from '../../ng2-nvd3';
@@ -29,7 +29,7 @@ export class IkhtisarStatistikPiePage {
   url = "https://api.kawaljakarta.org/v1/ikhtisar-statistik-antar-kerja?kategori=" + "Lowongan";
 
 
-  constructor(public nav: NavController, public dataService: DataService, public getOptions: Options, private zone:NgZone) {
+  constructor(public nav: NavController, public dataService: DataService, public getOptions: Options) {
     console.log('on constructor main');
     this.arrObj = [];
     this.dataService.load(this.url)
