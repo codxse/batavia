@@ -1,8 +1,8 @@
 import {Component, ViewChild} from '@angular/core';
 import {App, ionicBootstrap, Platform, Nav} from 'ionic-angular';
 import {StatusBar} from 'ionic-native';
-import {GettingStartedPage} from './pages/getting-started/getting-started';
-import {ListPage} from './pages/list/list';
+// import {GettingStartedPage} from './pages/getting-started/getting-started';
+// import {ListPage} from './pages/list/list';
 import {IntroPage} from './pages/intro/intro';
 import {MainPage} from './pages/main/main';
 import {CreditPage} from './pages/credit/credit';
@@ -31,8 +31,8 @@ class MyApp {
       { title: 'Topik Ekonomi Mikro', component: MikroMenuPage, icon: 'pizza' },
       { title: 'Kredit', component: CreditPage, icon: 'paper' },
       { title: 'Perkenalan', component: IntroPage, icon: 'megaphone' },
-      { title: 'Getting Started', component: GettingStartedPage, icon: 'home' },
-      { title: 'List', component: ListPage, icon: 'home' }
+      // { title: 'Getting Started', component: GettingStartedPage, icon: 'home' },
+      // { title: 'List', component: ListPage, icon: 'home' }
     ];
 
   }

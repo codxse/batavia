@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
 import {NavController} from 'ionic-angular';
 import {IkhtisarStatistikTabPage} from '../ikhtisar-statistik-tab/ikhtisar-statistik-tab';
+import {UpahMinimumProvinsiTabPage} from '../upah-minimum-provinsi-tab/upah-minimum-provinsi-tab';
 import {UpahMinimumProvinsiPage} from '../upah-minimum-provinsi/upah-minimum-provinsi';
 import {PertumbuhanEkonomiPage} from '../pertumbuhan-ekonomi/pertumbuhan-ekonomi';
 import {TingkatInflasiPage} from '../tingkat-inflasi/tingkat-inflasi';
@@ -29,7 +30,7 @@ export class MakroMenuPage {
       },
       {
         title: 'Upah Minimum Provinsi',
-        component: UpahMinimumProvinsiPage,
+        component: UpahMinimumProvinsiTabPage,
         category: 'Ketenaga Kerjaan',
         data: 2,
         image: 'home'
