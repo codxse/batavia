@@ -17,10 +17,10 @@ export class DataService {
   }
 
   load(url) {
-    if (this.data) {
-      // already loaded data
-      return Promise.resolve(this.data);
-    }
+    // if (this.data) {
+    //   // already loaded data
+    //   return Promise.resolve(this.data);
+    // }
 
     // don't have the data yet
     return new Promise(resolve => {

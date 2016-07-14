@@ -55,6 +55,55 @@ export class Options{
     }
   }
 
+  loadOptionScatter(xAxisLabel, yAxisLabel) {
+    return {
+      chart: {
+        type: 'scatterChart',
+        height: 340,
+        margin: {
+          top: 5,
+          right: 55,
+          bottom: 50,
+          left: 65
+        },
+        showLegend: false,
+        color: d3.scale.category10().range(),
+        scatter: {
+          onlyCircles: false
+        },
+        showDistX: true,
+        showDistY: true,
+        duration: 350,
+        xAxis: {
+          axisLabel: xAxisLabel,
+          tickFormat: function(d){
+            return d3.format('.02f')(d);
+          },
+          axisLabelDistance: 0,
+          shiwMaxMin: false
+        },
+        yAxis: {
+          axisLabel: yAxisLabel,
+          axisLabelDistance: 0,
+          tickFormat: function(d){
+            return d3.format('.02f')(d);
+          },
+          showMaxMin: false
+        },
+        zoom: {
+          //NOTE: All attributes below are optional
+          enabled: false,
+          scaleExtent: [1, 10],
+          useFixedDomain: true,
+          useNiceScale: true,
+          horizontalOff: true,
+          verticalOff: false,
+          unzoomEventType: 'dblclick.zoom'
+        }
+      }
+    }
+  }
+
   loadOptionLinePlus() {
     return {
       chart: {
@@ -84,7 +133,7 @@ export class Options{
           tickFormat: function(d) {
             // var dx = this.data[0].values[d] && this.data[0].values[d].x || 0;
             // if (dx > 0) {
-              return d3.time.format('%Y')(new Date(d));
+            return d3.time.format('%Y')(new Date(d));
             // }
             // return null;
           },
@@ -114,7 +163,7 @@ export class Options{
             return prefix.scale(d) + prefix.symbol;
           },
           showMaxMin: false,
-          axisLabelDistance: -35
+          axisLabelDistance: -38
         }
       }
     }
