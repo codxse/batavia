@@ -12,5 +12,16 @@
 </ion-navbar>
 
 <ion-content padding class="upah-minimum-provinsi-line">
-
+  <div>
+    <nvd3 [options]="options" [data]="data"></nvd3>
+  </div>
+  <ion-item>
+    <ion-label>Rentang</ion-label>
+    <ion-select [(ngModel)]="dari">
+      <ion-option *ngFor="let date of dateArr" value="{{date}}">{{date | date:'y'}}</ion-option>
+    </ion-select>
+    <ion-select [(ngModel)]="dampai">
+      <ion-option *ngFor="let date of dateArr" value="{{date}}">{{date | date:'y'}}</ion-option>
+    </ion-select>
+  </ion-item>
 </ion-content>
