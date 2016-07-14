@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import {NavController} from 'ionic-angular';
 import {IkhtisarStatistikTabPage} from '../ikhtisar-statistik-tab/ikhtisar-statistik-tab';
 import {UpahMinimumProvinsiTabPage} from '../upah-minimum-provinsi-tab/upah-minimum-provinsi-tab';
-import {PertumbuhanEkonomiPage} from '../pertumbuhan-ekonomi/pertumbuhan-ekonomi';
+import {PertumbuhanEkonomiTabPage} from '../pertumbuhan-ekonomi-tab/pertumbuhan-ekonomi-tab';
 import {TingkatInflasiPage} from '../tingkat-inflasi/tingkat-inflasi';
 import {KomponenInflasiPage} from '../komponen-inflasi/komponen-inflasi';
 import {StrukturEkonomiPage} from '../struktur-ekonomi/struktur-ekonomi';
@@ -36,7 +36,7 @@ export class MakroMenuPage {
       },
       {
         title: 'Pertumbuhan Ekonomi',
-        component: PertumbuhanEkonomiPage,
+        component: PertumbuhanEkonomiTabPage,
         category: 'Perekonomian',
         data: 3,
         image: 'home'
