@@ -72,7 +72,7 @@ export class IkhtisarStatistikLinePage{
 
   ngOnInit() {
     console.log('ong ngOnInit');
-    this.options = this.getOptions.loadOptionLine("Tahun", "Jiwa");
+    this.options = this.getOptions.loadOptionLine("", "Jiwa", null, -5, 55);
   }
 
 }

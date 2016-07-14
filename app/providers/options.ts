@@ -7,19 +7,21 @@ export class Options{
 
   constructor() {}
 
-  loadOptionLine(xAxisLabel, yAxisLabel) {
+  loadOptionLine(xAxisLabel, yAxisLabel, forceY, yAxisLabelDistance, marginLeft) {
+    if (typeof forceY === "undefined") { forceY = null; }
     return {
       chart: {
         type: 'lineChart',
         height: 350,
         margin : {
           top: 10,
-          right: 35,
-          bottom: 20,
-          left: 55
+          right: 45,
+          bottom: 25,
+          left: marginLeft
         },
         showLegend: false,
         legendPosition: "bottom",
+        forceY: forceY,
         x: function(d) {
           return new Date(d.x);
         },
@@ -41,7 +43,7 @@ export class Options{
         },
         yAxis: {
           axisLabel: yAxisLabel,
-          axisLabelDistance: -5,
+          axisLabelDistance: yAxisLabelDistance,
           tickFormat: function(d) {
             var prefix = d3.formatPrefix(d);
             return prefix.scale(d) + prefix.symbol;
