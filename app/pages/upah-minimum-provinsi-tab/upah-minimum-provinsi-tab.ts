@@ -1,8 +1,8 @@
 import {Component} from '@angular/core';
 import {NavController, NavParams} from 'ionic-angular';
 import {ViewController, Platform} from 'ionic-angular';
-import {IkhtisarStatistikLinePage} from '../ikhtisar-statistik-line/ikhtisar-statistik-line';
-import {IkhtisarStatistikPiePage} from '../ikhtisar-statistik-pie/ikhtisar-statistik-pie';
+import {UpahMinimumProvinsiLinePage} from '../upah-minimum-provinsi-line/upah-minimum-provinsi-line';
+import {UpahMinimumProvinsiScatterPage} from '../upah-minimum-provinsi-scatter/upah-minimum-provinsi-scatter';
 
 @Component({
   template: `
@@ -31,6 +31,6 @@ class TabTextPage {
     </ion-tabs>
 `})
 export class UpahMinimumProvinsiTabPage {
-  tabOne = IkhtisarStatistikLinePage;
-  tabTwo = IkhtisarStatistikPiePage;
+  tabOne = UpahMinimumProvinsiLinePage;
+  tabTwo = UpahMinimumProvinsiScatterPage;
 }
