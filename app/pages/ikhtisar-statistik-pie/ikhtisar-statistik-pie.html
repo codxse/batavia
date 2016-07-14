@@ -5,27 +5,39 @@
   Ionic pages and navigation.
 -->
 <ion-navbar *navbar>
-  <ion-title>ikhtisar-statistik-pie</ion-title>
+  <ion-title>Ketenagakerjaan</ion-title>
 </ion-navbar>
 
 <ion-content padding class="ikhtisar-statistik-pie">
-  <ion-list>
-    <ion-item>
-      <ion-label>Kategori</ion-label>
-      <ion-select [(ngModel)]="kategori" (ngModelChange)="onChange($event, 'kategori')">
-        <ion-option value="lowongan">Lowongan</ion-option>
-        <ion-option value="pencari">Pencari</ion-option>
-      </ion-select>
-    </ion-item>
-    <ion-item>
-    <ion-label>Tahun</ion-label>
-    <ion-select [(ngModel)]="tahun" (ngModelChange)="onChange($event, 'tahun')">
-      <ion-option *ngFor="let thn of tahunArr" value="{{thn}}">{{thn | date:'y'}}</ion-option>
+
+  <!-- <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content
+  refreshingSpinner="circles"
+  refreshingText="Refreshing...">
+</ion-refresher-content>
+
+</ion-refresher> -->
+<div>
+  <nvd3 [options]="options" [data]="data"></nvd3>
+</div>
+<ion-list>
+  <ion-item>
+    <ion-label>Kategori</ion-label>
+    <ion-select [(ngModel)]="kategori" (ngModelChange)="onChange($event, 'kategori')">
+      <ion-option value="lowongan">Lowongan</ion-option>
+      <ion-option value="pencari">Pencari</ion-option>
     </ion-select>
   </ion-item>
-  </ion-list>
-  <div>
-    <nvd3 [options]="options" [data]="data"></nvd3>
-  </div>
-  <p>-{{kategori}}, -{{tahun}}</p>
+  <ion-item>
+  <ion-label>Tahun</ion-label>
+  <ion-select [(ngModel)]="tahun" (ngModelChange)="onChange($event, 'tahun')">
+    <ion-option *ngFor="let data of dataArr" value="{{data.tahun}}">{{data.tahun | date:'y'}}</ion-option>
+  </ion-select>
+</ion-item>
+</ion-list>
+  <!-- <p>-{{kategori}}, -{{tahun}}</p>
+
+  <div *ngFor="let data of dataArr">
+    <nvd3 [options]="options" [data]="data.values"></nvd3>
+  </div> -->
 </ion-content>

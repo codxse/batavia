@@ -1,4 +1,4 @@
-import {Component, OnInit, OnChanges, Output, EventEmitter} from '@angular/core';
+import {Component, OnInit, OnChanges, Output, AfterViewInit, EventEmitter, ViewChild, NgZone} from '@angular/core';
 import {NavController} from 'ionic-angular';
 import {DataService} from '../../providers/data-service/data-service';
 import {nvD3} from '../../ng2-nvd3';
@@ -17,8 +17,8 @@ declare let d3: any;
   templateUrl: 'build/pages/ikhtisar-statistik-pie/ikhtisar-statistik-pie.html',
 })
 export class IkhtisarStatistikPiePage {
-  @Output() ngModelChange: EventEmitter<any> = new EventEmitter(false);
-
+  //@Output() ngModelChange: EventEmitter<any> = new EventEmitter(false);
+  @ViewChild(nvD3) nvD3: nvD3;
   options;
   dataArr;
   data;
@@ -29,7 +29,7 @@ export class IkhtisarStatistikPiePage {
   url = "https://api.kawaljakarta.org/v1/ikhtisar-statistik-antar-kerja?kategori=" + "Lowongan";
 
 
-  constructor(public nav: NavController, public dataService: DataService, public getOptions: Options) {
+  constructor(public nav: NavController, public dataService: DataService, public getOptions: Options, private zone:NgZone) {
     console.log('on constructor main');
     this.arrObj = [];
     this.dataService.load(this.url)
@@ -76,22 +76,43 @@ export class IkhtisarStatistikPiePage {
       this.tahunArr = selectDistinct("tahun", data).sort();
       this.dataArr = generateData("tahun", data, "tahun", "rincian", "jumlah");
       this.data = this.dataArr[0].values;
-      console.log(this.data);
-      this.options = this.getOptions.loadOptionPie("Pie");
+      console.log(this.dataArr);
+      this.options = this.getOptions.loadOptionPie("");
     });
 
   }
 
-  ngOninit(): void {
-    console.log(true);
+  ngOninit() {
+    console.log('onNg on Init');
   }
 
-  onChange(newValue, ngModel): void {
+  ngAfterViewInit() {
+    console.log('after view Init');
+    console.log(this.dataArr);
+
+  }
+
+  onChange(newValue, ngModel) {
     console.log("onChange");
     if (ngModel == 'tahun') {
+      console.log('this.dataArr[0].values');
+      for (let element of this.dataArr) {
+        if (element.tahun = newValue) {
+          console.log(element.values);
+          this.data = element.values;
+          this.nvD3.updateWithData(this.data);
+          break;
+        }
+      }
+      this.dataArr.indexOf(this.dataArr.newValue);
+
       this.tahun = new Date(newValue);
       console.log(this.tahun);
     }
+
+    // if (ngModel == 'chart') {
+    //   this.data = newValue;
+    // }
 
     if (ngModel == 'kategori') {
       this.kategori = newValue;
@@ -99,4 +120,14 @@ export class IkhtisarStatistikPiePage {
       console.log(this.kategori);
     }
   }
+
+  doRefresh(refresher) {
+    console.log('Begin refresher');
+
+    setTimeout(() => {
+      console.log('Async operation has ended');
+      refresher.complete();
+    }, 2000);
+  }
+
 }

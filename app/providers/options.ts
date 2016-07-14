@@ -11,11 +11,11 @@ export class Options{
     return {
       chart: {
         type: 'lineChart',
-        height: 600,
+        height: 350,
         margin : {
-          top: 30,
-          right: 55,
-          bottom: 300,
+          top: 10,
+          right: 35,
+          bottom: 20,
           left: 55
         },
         showLegend: false,
@@ -60,19 +60,24 @@ export class Options{
       chart: {
         title: title,
         type: 'pieChart',
-        height: 500,
+        height: 350,
+        showLegend: false,
         x: function(d){return d.key;},
         y: function(d){return d.y;},
         showLabels: true,
         donut: false,
-        duration: 500,
+        duration: 100,
         labelThreshold: 0.01,
         labelType: "percent",
         labelSunbeamLayout: true,
+        margin: {
+          left: -10,
+          top: -8
+        },
         legend: {
           margin: {
-            top: 5,
-            right: 35,
+            top: -250,
+            right: 50,
             bottom: 5,
             left: 0
           }

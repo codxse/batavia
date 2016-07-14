@@ -20,6 +20,7 @@ export class nvD3 {
 
   ngOnChanges(){
     this.updateWithOptions(this.options);
+    //this.updateWithData(this.data);
   }
 
   updateWithOptions(options){
@@ -140,9 +141,10 @@ export class nvD3 {
         if (!isNaN(+w)) w += 'px';
         this.svg.attr('width', w).style({width: w});
       } else {
-        this.svg.attr('width', '100%').style({width: '100vw'});
+        this.svg.attr('width', '100vw').style({width: '100vw'});
       }
-
+      console.log('at nvD3')
+      console.log(data);
       this.svg.datum(data).call(this.chart);
     }
   }

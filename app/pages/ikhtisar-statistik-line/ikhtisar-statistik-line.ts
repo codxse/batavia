@@ -68,7 +68,8 @@ export class IkhtisarStatistikLinePage{
     });
   }
 
-  ngOnInit(): void {
+  ngOnInit() {
+    console.log('ong ngOnInit');
     this.options = this.getOptions.loadOptionLine("Tahun", "Jiwa");
   }
 
