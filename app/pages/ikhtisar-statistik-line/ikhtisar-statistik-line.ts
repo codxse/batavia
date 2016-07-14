@@ -22,6 +22,7 @@ export class IkhtisarStatistikLinePage{
   options;
   data;
   arrObj;
+  dateArr;
 
   constructor(public nav: NavController, public dataService: DataService, public getOptions: Options) {
     console.log('on constructor main');
@@ -64,7 +65,8 @@ export class IkhtisarStatistikLinePage{
       }
 
       this.data = genData('rincian', 'jumlah', data, 'tahun');
-      console.log(this.data)
+      this.dateArr = genKeys('tahun', data);
+      console.log(this.dateArr);
     });
   }
 

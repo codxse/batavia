@@ -17,7 +17,7 @@ declare let d3: any;
   templateUrl: 'build/pages/ikhtisar-statistik-pie/ikhtisar-statistik-pie.html',
 })
 export class IkhtisarStatistikPiePage {
-  //@Output() ngModelChange: EventEmitter<any> = new EventEmitter(false);
+  @Output() ngModelChange: EventEmitter<any> = new EventEmitter(false);
   @ViewChild(nvD3) nvD3: nvD3;
   options;
   dataArr;
@@ -76,6 +76,7 @@ export class IkhtisarStatistikPiePage {
       this.tahunArr = selectDistinct("tahun", data).sort();
       this.dataArr = generateData("tahun", data, "tahun", "rincian", "jumlah");
       this.data = this.dataArr[0].values;
+      console.log('on 200');
       console.log(this.dataArr);
       this.options = this.getOptions.loadOptionPie("");
     });
@@ -97,10 +98,11 @@ export class IkhtisarStatistikPiePage {
     if (ngModel == 'tahun') {
       console.log('this.dataArr[0].values');
       for (let element of this.dataArr) {
-        if (element.tahun = newValue) {
+        if (element.tahun == newValue) {
           console.log(element.values);
           this.data = element.values;
-          this.nvD3.updateWithData(this.data);
+          // this.nvD3.updateWithData(this.data);
+          this.nvD3.chart.update();
           break;
         }
       }

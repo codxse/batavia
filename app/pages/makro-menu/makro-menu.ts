@@ -2,7 +2,6 @@ import {Component} from '@angular/core';
 import {NavController} from 'ionic-angular';
 import {IkhtisarStatistikTabPage} from '../ikhtisar-statistik-tab/ikhtisar-statistik-tab';
 import {UpahMinimumProvinsiTabPage} from '../upah-minimum-provinsi-tab/upah-minimum-provinsi-tab';
-import {UpahMinimumProvinsiPage} from '../upah-minimum-provinsi/upah-minimum-provinsi';
 import {PertumbuhanEkonomiPage} from '../pertumbuhan-ekonomi/pertumbuhan-ekonomi';
 import {TingkatInflasiPage} from '../tingkat-inflasi/tingkat-inflasi';
 import {KomponenInflasiPage} from '../komponen-inflasi/komponen-inflasi';
