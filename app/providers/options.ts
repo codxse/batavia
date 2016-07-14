@@ -57,7 +57,7 @@ export class Options{
     }
   }
 
-  loadOptionScatter(xAxisLabel, yAxisLabel) {
+  loadOptionScatter(xAxisLabel, yAxisLabel, yaxisLabelDistance, marginLeft) {
     return {
       chart: {
         type: 'scatterChart',
@@ -65,8 +65,8 @@ export class Options{
         margin: {
           top: 5,
           right: 55,
-          bottom: 50,
-          left: 65
+          bottom: 55,
+          left: marginLeft
         },
         showLegend: false,
         color: d3.scale.category10().range(),
@@ -86,7 +86,7 @@ export class Options{
         },
         yAxis: {
           axisLabel: yAxisLabel,
-          axisLabelDistance: 0,
+          axisLabelDistance: yaxisLabelDistance,
           tickFormat: function(d){
             return d3.format('.02f')(d);
           },

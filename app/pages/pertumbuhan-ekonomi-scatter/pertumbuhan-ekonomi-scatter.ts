@@ -15,7 +15,7 @@ declare let d3: any;
 @Component({
   directives: [nvD3],
   providers: [DataService, Options],
-  templateUrl: 'build/pages/upah-minimum-provinsi-scatter/upah-minimum-provinsi-scatter.html',
+  templateUrl: 'build/pages/pertumbuhan-ekonomi-scatter/pertumbuhan-ekonomi-scatter.html',
 })
 export class PertumbuhanEkonomiScatterPage {
   urlData = "https://api.kawaljakarta.org/v1/pertumbuhan-ekonomi/data?keterangan=Bukan%20Outlier";
@@ -44,7 +44,7 @@ export class PertumbuhanEkonomiScatterPage {
             this.data = this.model;
             this.modelObj = this.model[0];
             console.log(this.modelObj);
-            this.options = this.getOptions.loadOptionScatter('Jakarta (%)', 'Nasional (%)');
+            this.options = this.getOptions.loadOptionScatter('Jakarta (%)', 'Nasional (%)', -7, 55);
             console.log(this.data);
           });
 

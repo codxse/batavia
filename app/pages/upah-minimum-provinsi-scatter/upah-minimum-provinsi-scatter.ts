@@ -44,7 +44,7 @@ export class UpahMinimumProvinsiScatterPage {
             this.data = this.model;
             this.modelObj = this.model[0];
             console.log(this.modelObj);
-            this.options = this.getOptions.loadOptionScatter('Inflasi (%)', 'Kenaikan UMP (%)');
+            this.options = this.getOptions.loadOptionScatter('Inflasi (%)', 'Kenaikan UMP (%)', 0, 65);
             console.log(this.data);
           });
 
