@@ -4,7 +4,7 @@ import {IkhtisarStatistikTabPage} from '../ikhtisar-statistik-tab/ikhtisar-stati
 import {UpahMinimumProvinsiTabPage} from '../upah-minimum-provinsi-tab/upah-minimum-provinsi-tab';
 import {PertumbuhanEkonomiTabPage} from '../pertumbuhan-ekonomi-tab/pertumbuhan-ekonomi-tab';
 import {TingkatInflasiTabPage} from '../tingkat-inflasi-tab/tingkat-inflasi-tab';
-import {KomponenInflasiPage} from '../komponen-inflasi/komponen-inflasi';
+import {KomponenInflasiTabPage} from '../komponen-inflasi-tab/komponen-inflasi-tab';
 import {StrukturEkonomiPage} from '../struktur-ekonomi/struktur-ekonomi';
 import {PendapatanPerkapitaTabPage} from '../pendapatan-perkapita-tab/pendapatan-perkapita-tab';
 
@@ -50,7 +50,7 @@ export class MakroMenuPage {
       },
       {
         title: 'Komponen Inflasi',
-        component: KomponenInflasiPage,
+        component: KomponenInflasiTabPage,
         category: 'Perekonomian',
         data: 5,
         image: 'home'
