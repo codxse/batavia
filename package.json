@@ -49,5 +49,8 @@
     "type": "git",
     "url": "git://github.com/codxse/batavia.git"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "scripts": {
+    "test": "ionic serve -b"
+  }
 }

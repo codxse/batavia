@@ -1,0 +1,11 @@
+language: node_js
+node_js:
+  - "6"
+branches:
+  only:
+    - master
+before_script:
+  - npm install -g ionic@beta
+  - sudo npm install -g cordova
+after_script:
+  - npm test
