@@ -13,22 +13,15 @@
 
 <ion-content padding class="komponen-inflasi-pie">
 
-<!-- <div>
+<div>
   <nvd3 [options]="options" [data]="data"></nvd3>
 </div>
 <ion-list>
   <ion-item>
-    <ion-label>Kategori</ion-label>
-    <ion-select [(ngModel)]="kategori" (ngModelChange)="onChange('kategori')">
-      <ion-option value="Lowongan">Lowongan</ion-option>
-      <ion-option value="Pencari">Pencari</ion-option>
-    </ion-select>
-  </ion-item>
-  <ion-item>
   <ion-label>Tahun</ion-label>
-  <ion-select [(ngModel)]="tahun" (ngModelChange)="onChange('tahun')">
-    <ion-option *ngFor="let tahun of tahunArr" value="{{tahun}}">{{tahun.substring(0,4)}}</ion-option>
+  <ion-select [(ngModel)]="tahun">
+    <ion-option *ngFor="let tahun of dateArr" value="{{tahun}}">{{tahun.substring(0,4)}}</ion-option>
   </ion-select>
 </ion-item>
-</ion-list> -->
+</ion-list>
 </ion-content>

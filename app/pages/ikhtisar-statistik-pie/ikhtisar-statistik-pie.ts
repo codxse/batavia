@@ -34,7 +34,7 @@ export class IkhtisarStatistikPiePage {
     this.loadData(this.kategori);
   }
 
-  ngOninit() {
+  ngOnInit() {
     console.log('onNg on Init');
   }
 
