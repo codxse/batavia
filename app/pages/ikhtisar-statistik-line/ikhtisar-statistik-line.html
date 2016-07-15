@@ -20,7 +20,7 @@ Ionic pages and navigation.
     <ion-select [(ngModel)]="dari">
       <ion-option *ngFor="let date of dateArr" value="{{date}}">{{date | date:'y'}}</ion-option>
     </ion-select>
-    <ion-select [(ngModel)]="dampai">
+    <ion-select [(ngModel)]="sampai" (ngModelChange)="onChange()">
       <ion-option *ngFor="let date of dateArr" value="{{date}}">{{date | date:'y'}}</ion-option>
     </ion-select>
   </ion-item>
