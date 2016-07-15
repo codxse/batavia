@@ -7,6 +7,6 @@ branches:
 before_script:
   - npm install
   - npm install -g ionic@beta
-  - sudo npm install -g cordova
+  - npm install -g cordova
 after_script:
   - npm test
