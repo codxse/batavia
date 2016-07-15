@@ -1,0 +1,27 @@
+<!--
+Generated template for the IkhtisarStatistikPage page.
+
+See http://ionicframework.com/docs/v2/components/#navigation for more info on
+Ionic pages and navigation.
+-->
+<ion-navbar *navbar primary>
+  <button menuToggle>
+    <ion-icon name="menu"></ion-icon>
+  </button>
+  <ion-title>Pendapatan Perkapita</ion-title>
+</ion-navbar>
+
+<ion-content padding>
+  <div>
+    <nvd3 [options]="options" [data]="data"></nvd3>
+  </div>
+  <ion-item>
+    <ion-label>Rentang</ion-label>
+    <ion-select [(ngModel)]="dari">
+      <ion-option *ngFor="let date of dateArr" value="{{date}}">{{date | date:'y'}}</ion-option>
+    </ion-select>
+    <ion-select [(ngModel)]="sampai">
+      <ion-option *ngFor="let date of dateArr" value="{{date}}">{{date | date:'y'}}</ion-option>
+    </ion-select>
+  </ion-item>
+</ion-content>

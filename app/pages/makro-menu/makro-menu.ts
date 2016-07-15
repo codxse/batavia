@@ -6,7 +6,7 @@ import {PertumbuhanEkonomiTabPage} from '../pertumbuhan-ekonomi-tab/pertumbuhan-
 import {TingkatInflasiTabPage} from '../tingkat-inflasi-tab/tingkat-inflasi-tab';
 import {KomponenInflasiPage} from '../komponen-inflasi/komponen-inflasi';
 import {StrukturEkonomiPage} from '../struktur-ekonomi/struktur-ekonomi';
-import {PendapatanPerkapitaPage} from '../pendapatan-perkapita/pendapatan-perkapita';
+import {PendapatanPerkapitaTabPage} from '../pendapatan-perkapita-tab/pendapatan-perkapita-tab';
 
 @Component({
   templateUrl: 'build/pages/makro-menu/makro-menu.html',
@@ -64,9 +64,9 @@ export class MakroMenuPage {
       },
       {
         title: 'Pendapatan Perkapita',
-        component: PendapatanPerkapitaPage,
+        component: PendapatanPerkapitaTabPage,
         category: 'Pendapatan Perkapita',
-        data: 13,
+        data: 12,
         image: 'home'
       }
     ];
