@@ -26,11 +26,21 @@ export class IkhtisarStatistikPiePage {
   kategori: String;
   tahun: Date;
   tahunArr: Array<Date>;
-  url = "https://api.kawaljakarta.org/v1/ikhtisar-statistik-antar-kerja?kategori=" + "Lowongan";
-
+  // url = "https://api.kawaljakarta.org/v1/ikhtisar-statistik-antar-kerja?kategori=" + "Lowongan";
+  url;
 
   constructor(public nav: NavController, public dataService: DataService, public getOptions: Options) {
-    console.log('on constructor main');
+    this.kategori = "Lowongan";
+    this.loadData(this.kategori);
+  }
+
+  ngOninit() {
+    console.log('onNg on Init');
+  }
+
+  loadData(type) {
+    this.url = "https://api.kawaljakarta.org/v1/ikhtisar-statistik-antar-kerja?kategori=" + type;
+
     this.arrObj = [];
     this.dataService.load(this.url)
     .then(data => {
@@ -70,56 +80,21 @@ export class IkhtisarStatistikPiePage {
         })
       }
 
-      console.log("PIE!!")
-
-
       this.tahunArr = selectDistinct("tahun", data).sort();
       this.dataArr = generateData("tahun", data, "tahun", "rincian", "jumlah");
-      this.data = this.dataArr[0].values;
-      console.log('on 200');
-      console.log(this.dataArr);
+      this.tahun = this.tahunArr[0];
+      this.selectPieOfYear(this.tahun);
       this.options = this.getOptions.loadOptionPie("");
     });
-
   }
 
-  ngOninit() {
-    console.log('onNg on Init');
-  }
-
-  ngAfterViewInit() {
-    console.log('after view Init');
-    console.log(this.dataArr);
-
-  }
-
-  onChange(newValue, ngModel) {
-    console.log("onChange");
+  onChange(ngModel) {
     if (ngModel == 'tahun') {
-      console.log('this.dataArr[0].values');
-      for (let element of this.dataArr) {
-        if (element.tahun == newValue) {
-          console.log(element.values);
-          this.data = element.values;
-          // this.nvD3.updateWithData(this.data);
-          this.nvD3.chart.update();
-          break;
-        }
-      }
-      this.dataArr.indexOf(this.dataArr.newValue);
-
-      this.tahun = new Date(newValue);
-      console.log(this.tahun);
+      this.selectPieOfYear(this.tahun);
     }
 
-    // if (ngModel == 'chart') {
-    //   this.data = newValue;
-    // }
-
     if (ngModel == 'kategori') {
-      this.kategori = newValue;
-      this.url = "https://api.kawaljakarta.org/v1/ikhtisar-statistik-antar-kerja?kategori=" + this.kategori;
-      console.log(this.kategori);
+      this.loadData(this.kategori);
     }
   }
 
@@ -130,6 +105,18 @@ export class IkhtisarStatistikPiePage {
       console.log('Async operation has ended');
       refresher.complete();
     }, 2000);
+  }
+
+  selectPieOfYear(year) {
+    let i = 0;
+    do {
+      if (this.dataArr[i].tahun == year) {
+        this.data = this.dataArr[i].values;
+        i = i + this.dataArr.length;
+      }
+      i++;
+    } while (i < this.dataArr.length);
+    if (this.nvD3.chart != null) this.nvD3.chart.update();
   }
 
 }
