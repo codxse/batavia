@@ -3,7 +3,7 @@ import {NavController} from 'ionic-angular';
 import {IkhtisarStatistikTabPage} from '../ikhtisar-statistik-tab/ikhtisar-statistik-tab';
 import {UpahMinimumProvinsiTabPage} from '../upah-minimum-provinsi-tab/upah-minimum-provinsi-tab';
 import {PertumbuhanEkonomiTabPage} from '../pertumbuhan-ekonomi-tab/pertumbuhan-ekonomi-tab';
-import {TingkatInflasiPage} from '../tingkat-inflasi/tingkat-inflasi';
+import {TingkatInflasiTabPage} from '../tingkat-inflasi-tab/tingkat-inflasi-tab';
 import {KomponenInflasiPage} from '../komponen-inflasi/komponen-inflasi';
 import {StrukturEkonomiPage} from '../struktur-ekonomi/struktur-ekonomi';
 import {PendapatanPerkapitaPage} from '../pendapatan-perkapita/pendapatan-perkapita';
@@ -43,7 +43,7 @@ export class MakroMenuPage {
       },
       {
         title: 'Tingkat Inflasi',
-        component: TingkatInflasiPage,
+        component: TingkatInflasiTabPage,
         category: 'Perekonomian',
         data: 4,
         image: 'home'
