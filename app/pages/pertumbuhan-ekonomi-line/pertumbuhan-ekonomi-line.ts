@@ -35,7 +35,7 @@ export class PertumbuhanEkonomiLinePage {
         this.data = this.genData(data, 'tahun', keys, this.genObject);
         this.data[0].key = "Jakarta";
         this.data[1].key = "Nasional";
-        this.options = this.getOptions.loadOptionLine("","%",[4.5,7],-22, 40);
+        this.options = this.getOptions.loadOptionLine("","%",null,-22, 40);
         this.dateArr = this.genKeys('tahun', data);
         console.log(this.data);
         // console.log(this.dateArr);

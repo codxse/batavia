@@ -7,6 +7,10 @@ export class Options{
 
   constructor() {}
 
+  getLength(number) {
+    return number.toString().length;
+  }
+
   loadOptionLine(xAxisLabel, yAxisLabel, forceY, yAxisLabelDistance, marginLeft) {
     if (typeof forceY === "undefined") { forceY = null; }
     return {
@@ -45,8 +49,11 @@ export class Options{
           axisLabel: yAxisLabel,
           axisLabelDistance: yAxisLabelDistance,
           tickFormat: function(d) {
-            var prefix = d3.formatPrefix(d);
-            return prefix.scale(d) + prefix.symbol;
+            if (d.toString().length < 8) {
+              let prefix = d3.formatPrefix(d);
+              return prefix.scale(d) + prefix.symbol;
+            }
+            return d3.format('.02f')(d);
           },
           showMaxMin: false
         },
