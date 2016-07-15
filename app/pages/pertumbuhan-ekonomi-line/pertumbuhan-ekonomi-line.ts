@@ -43,11 +43,7 @@ export class PertumbuhanEkonomiLinePage {
         let startTime = new Date(this.dari).getTime();
         let endTime = new Date(this.sampai).getTime();
         this.data = this.genData(data, 'tahun', this.keys, this.genObject, startTime, endTime);
-        this.data[0].key = "Jakarta";
-        this.data[1].key = "Nasional";
         this.options = this.getOptions.loadOptionLine("","%",null,-22, 40);
-        console.log(data);
-        console.log(this.data);
       });
     }
 
@@ -73,6 +69,8 @@ export class PertumbuhanEkonomiLinePage {
       for (let key of arrKey) {
         arrObj.push(genObject(data, key, 'tahun', startTime, endTime))
       }
+      arrObj[0].key = "Jakarta";
+      arrObj[1].key = "Nasional";
       return arrObj;
     }
 
