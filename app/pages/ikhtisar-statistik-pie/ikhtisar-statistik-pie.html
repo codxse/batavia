@@ -26,15 +26,15 @@
 <ion-list>
   <ion-item>
     <ion-label>Kategori</ion-label>
-    <ion-select [(ngModel)]="kategori" (ngModelChange)="onChange('kategori')">
-      <ion-option value="Lowongan">Lowongan</ion-option>
-      <ion-option value="Pencari">Pencari</ion-option>
+    <ion-select [(ngModel)]="kategori" (ngModelChange)="onChange($event, 'kategori')">
+      <ion-option value="lowongan">Lowongan</ion-option>
+      <ion-option value="pencari">Pencari</ion-option>
     </ion-select>
   </ion-item>
   <ion-item>
   <ion-label>Tahun</ion-label>
-  <ion-select [(ngModel)]="tahun" (ngModelChange)="onChange('tahun')">
-    <ion-option *ngFor="let tahun of tahunArr" value="{{tahun}}">{{tahun.substring(0,4)}}</ion-option>
+  <ion-select [(ngModel)]="tahun" (ngModelChange)="onChange($event, 'tahun')">
+    <ion-option *ngFor="let data of dataArr" value="{{data.tahun}}">{{data.tahun | date:'y'}}</ion-option>
   </ion-select>
 </ion-item>
 </ion-list>
