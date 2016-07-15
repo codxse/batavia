@@ -51,6 +51,6 @@
   },
   "license": "MIT",
   "scripts": {
-    "test": "ionic serve -b"
+    "test": "ionic serve --address localhost --port 6699 -b"
   }
 }
