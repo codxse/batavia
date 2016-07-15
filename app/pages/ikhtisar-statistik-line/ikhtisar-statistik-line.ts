@@ -26,62 +26,28 @@ export class IkhtisarStatistikLinePage{
   origData;
   arrObj;
   dateArr;
-  dari: Date;
-  sampai: Date;
+  dari = '2008-01-01T00:00:00.000Z';
+  sampai = '2014-01-01T00:00:00.000Z';
 
   constructor(public nav: NavController, public dataService: DataService, public getOptions: Options) {
     this.arrObj = [];
     this.dataService.load(this.url)
     .then(data => {
-      function genKeys(key, arrObj) {
-        let flags = [], cats = [], l = arrObj.length, i;
-        for (i=0; i<l; i++) {
-          if (flags[arrObj[i][key]]) continue;
-          flags[arrObj[i][key]] = true;
-          cats.push(arrObj[i][key]);
-        }
-        return cats;
-      }
-
-      function genVals(keyCat, valCat, keyValue, arrObj, dateKey) {
-        let values = [], l = arrObj.length, i;
-        for (i=0; i<l; i++) {
-          if (arrObj[i][keyCat] == valCat) {
-            values.push(
-              {
-                x: new Date(arrObj[i][dateKey]).getTime(),
-                y: arrObj[i][keyValue]
-              }
-            )
-          }
-        }
-        return values;
-      }
-
-      function genData(keyCat, keyValue, arrObj, dateKey) {
-        let categories = genKeys(keyCat, arrObj)
-        return categories.map(function(item) {
-          return {
-            key: item,
-            values: genVals(keyCat, item, keyValue, arrObj, dateKey)
-          }
-        });
-      }
-
       this.origData = data;
-      this.data = genData('rincian', 'jumlah', data, 'tahun');
-      this.dateArr = genKeys('tahun', data);
-      console.log(this.origData);
+      let initStartYear = new Date(this.dari).getTime();
+      let initEndYear = new Date(this.sampai).getTime();
+      this.data = this.generateData('rincian', 'jumlah', data, 'tahun', initStartYear, initEndYear);
+      this.dateArr = this.generateKeys('tahun', data);
     });
   }
 
-  generateData(keyCat, keyValue, arrObj, dateKey, startDate, endDate) {
+  generateData(keyCat, keyValue, arrObj, dateKey, startTime, endTime) {
     let categories = this.generateKeys(keyCat, arrObj)
     let parent = this;
     return categories.map(function(item) {
       return {
         key: item,
-        values: parent.generateVals(keyCat, item, keyValue, arrObj, dateKey, startDate, endDate)
+        values: parent.generateVals(keyCat, item, keyValue, arrObj, dateKey, startTime, endTime)
       }
     });
   }
@@ -96,13 +62,13 @@ export class IkhtisarStatistikLinePage{
     return cats;
   }
 
-  generateVals(keyCat, valCat, keyValue, arrObj, dateKey, startDate, endDate) {
+  generateVals(keyCat, valCat, keyValue, arrObj, dateKey, startTime, endTime) {
     let values = [], l = arrObj.length, i;
     for (i=0; i<l; i++) {
       let arrObjTime = new Date(arrObj[i][dateKey]).getTime();
-      let startDateTime = new Date(startDate).getTime();
-      let endDateTime = new Date(endDate).getTime();
-      if ((arrObj[i][keyCat] == valCat) && (startDateTime <= arrObjTime) && (arrObjTime <= endDateTime)) {
+      // let startDateTime = new Date(startDate).getTime();
+      // let endDateTime = new Date(endDate).getTime();
+      if ((arrObj[i][keyCat] == valCat) && (startTime <= arrObjTime) && (arrObjTime <= endTime)) {
         values.push(
           {
             x: arrObjTime,
@@ -118,8 +84,31 @@ export class IkhtisarStatistikLinePage{
     this.options = this.getOptions.loadOptionLine("Tahun", "Jiwa");
   }
 
-  onChange() {
-    this.data = this.generateData('rincian', 'jumlah', this.origData, 'tahun', this.dari, this.sampai);
+  onChangeStartYear() {
+    let startDate = new Date(this.dari);
+    let endDate = new Date(this.sampai);
+    if (startDate > endDate) {
+      let startYear = startDate.getFullYear();
+      endDate.setFullYear(startYear);
+      this.sampai = endDate.toISOString();
+    }
+    let startTime = startDate.getTime();
+    let endTime = endDate.getTime();
+    this.data = this.generateData('rincian', 'jumlah', this.origData, 'tahun', startTime, endTime);
+    this.nvD3.chart.update();
+  }
+
+  onChangeEndYear() {
+    let startDate = new Date(this.dari);
+    let endDate = new Date(this.sampai);
+    if (endDate < startDate) {
+      let endYear = endDate.getFullYear();
+      startDate.setFullYear(endYear);
+      this.dari = startDate.toISOString();
+    }
+    let startTime = startDate.getTime();
+    let endTime = endDate.getTime();
+    this.data = this.generateData('rincian', 'jumlah', this.origData, 'tahun', startTime, endTime);
     this.nvD3.chart.update();
   }
 
