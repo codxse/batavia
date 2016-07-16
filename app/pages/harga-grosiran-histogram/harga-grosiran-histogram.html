@@ -1,0 +1,18 @@
+<!--
+  Generated template for the HargaGrosiranHistogramPage page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-navbar *navbar primary>
+<button menuToggle>
+  <ion-icon name="menu"></ion-icon>
+</button>
+  <ion-title>Harga Grosiran</ion-title>
+</ion-navbar>
+
+<ion-content padding class="harga-grosiran-histogram">
+  <div>
+    <nvd3 [options]="options" [data]="data"></nvd3>
+  </div>
+</ion-content>
