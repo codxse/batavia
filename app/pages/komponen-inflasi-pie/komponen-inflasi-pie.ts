@@ -22,11 +22,11 @@ export class KomponenInflasiPiePage {
   options: any;
   tahun: any;
 
-  constructor(public nav: NavController, private dataService: DataService, private loadOptions: Options) {
+  constructor(private nav: NavController, private dataService: DataService, private loadOptions: Options) {
 
   }
 
-  ngOnInit(): void {
+  private ngOnInit(): void {
     console.log('on ngOnInit');
     this.tahun = 2012;
     this.url = "https://api.kawaljakarta.org/v1/komponen-inflasi/key=tahun&gd=%22"
@@ -34,7 +34,7 @@ export class KomponenInflasiPiePage {
     this.loadData(this.url);
   }
 
-  loadData(url): void {
+  private loadData(url): void {
     console.log('on loadData(): void');
     this.dataService.load(this.url)
       .then(data => {
@@ -46,7 +46,7 @@ export class KomponenInflasiPiePage {
       });
   }
 
-  handleData(datum) {
+  private handleData(datum): Array<any> {
     let dataArr = [];
     for (let data of datum) {
       dataArr.push({
@@ -58,7 +58,7 @@ export class KomponenInflasiPiePage {
   }
 
   // get unique array of tahun
-  selectDistinct(distinct, arrObj) {
+  private selectDistinct(distinct, arrObj): Array<any> {
     var flags = [], dataDistinct = [], l = arrObj.length, i;
     for (i=0; i<l; i++) {
       if (flags[arrObj[i][distinct]]) continue;
