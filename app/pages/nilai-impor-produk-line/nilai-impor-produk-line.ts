@@ -39,7 +39,7 @@ export class NilaiImporProdukLinePage {
                       "Mei", "Juni", "Juli", "Augustus", "September",
                       "Oktober", "November", "Desember"];
     this.loadData(this.url);
-    this.options = this.getOptions.loadOptionLine("", "Juta USD", null, -5, 55);
+    this.options = this.getOptions.loadOptionLine("", "Juta USD", "%b %Y", null, -5, 55);
   }
 
   private loadData(url): void {

@@ -49,7 +49,7 @@ export class Options{
     }
   }
 
-  loadOptionLine(xAxisLabel, yAxisLabel, forceY, yAxisLabelDistance, marginLeft) {
+  loadOptionLine(xAxisLabel, yAxisLabel, dateFormat, forceY, yAxisLabelDistance, marginLeft) {
     if (typeof forceY === "undefined") { forceY = null; }
     return {
       chart: {
@@ -79,7 +79,7 @@ export class Options{
         xAxis: {
           axisLabel: xAxisLabel,
           tickFormat: function(d) {
-            return d3.time.format('%Y')(new Date(d));
+            return d3.time.format(dateFormat)(new Date(d));
           },
           showMaxMin: false
         },
