@@ -33,7 +33,7 @@ export class EksporDanImporLinePage {
   private ngOnInit(): void {
     this.url = "https://api.kawaljakarta.org/v1/besar-ekspor-impor/";
     this.loadData(this.url);
-    this.options = this.getOptions.loadOptionLine("", "Juta USD", null, -5, 55);
+    this.options = this.getOptions.loadOptionLine("", "Juta USD", "%Y", null, -5, 55);
   }
 
   private loadData(url): void {

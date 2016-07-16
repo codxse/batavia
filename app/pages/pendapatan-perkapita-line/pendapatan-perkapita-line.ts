@@ -43,7 +43,7 @@ export class PendapatanPerkapitaLinePage {
         let startTime = new Date(this.dari).getTime();
         let endTime = new Date(this.sampai).getTime();
         this.data = this.genData(data, 'tahun', this.keys, this.genObject, startTime, endTime);
-        this.options = this.getOptions.loadOptionLine("","Juta Rupiah",null,-22, 40);
+        this.options = this.getOptions.loadOptionLine("","Juta Rupiah","%Y",null,-22, 40);
       });
     }
 

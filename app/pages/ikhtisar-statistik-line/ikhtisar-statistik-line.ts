@@ -82,7 +82,7 @@ export class IkhtisarStatistikLinePage{
 
   ngOnInit() {
     // console.log('ong ngOnInit');
-    this.options = this.getOptions.loadOptionLine("", "Jiwa", null, -5, 55);
+    this.options = this.getOptions.loadOptionLine("", "Jiwa","%Y", null, -5, 55);
   }
 
   onChangeStartYear() {

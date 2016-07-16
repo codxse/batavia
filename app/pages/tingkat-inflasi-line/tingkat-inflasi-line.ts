@@ -43,7 +43,7 @@ export class TingkatInflasiLinePage {
         let startTime = new Date(this.dari).getTime();
         let endTime = new Date(this.sampai).getTime();
         this.data = this.genData(data, 'tahun', this.keys, this.genObject, startTime, endTime);
-        this.options = this.getOptions.loadOptionLine("","Inflasi (%)",null,-22, 40);
+        this.options = this.getOptions.loadOptionLine("","Inflasi (%)","%Y",null,-22, 40);
       });
     }
 
