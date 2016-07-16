@@ -16,9 +16,10 @@ import {Options} from '../../providers/options';
   templateUrl: 'build/pages/struktur-ekonomi-pie/struktur-ekonomi-pie.html',
 })
 export class StrukturEkonomiPiePage {
+  @ViewChild(nvD3) nvD3: nvD3;
   url: String;
   data: Array<any>;
-  dateArr: Array<Date>;
+  yearArr: Array<Number>;
   options: any;
   tahun: any;
 
@@ -27,22 +28,30 @@ export class StrukturEkonomiPiePage {
   }
 
   private ngOnInit(): void {
-    console.log('on ngOnInit');
-    this.tahun = 2012;
+    this.tahun = new Date().getFullYear();
+    this.selectDataOfYear(this.tahun);
+    this.getDateArr("https://api.kawaljakarta.org/v1/struktur-ekonomi");
+    // console.log('on ngOnInit');
+    // this.tahun = 2012;
+    // this.url = "https://api.kawaljakarta.org/v1/struktur-ekonomi/key=tahun&gd=%22"
+    //             +(this.tahun - 1).toString()+"%22&ld=%22"+this.tahun.toString()+"%22";
+    // this.loadData(this.url);
+  }
+
+  // year is in Full Year format
+  private selectDataOfYear(year) {
     this.url = "https://api.kawaljakarta.org/v1/struktur-ekonomi/key=tahun&gd=%22"
-                +(this.tahun - 1).toString()+"%22&ld=%22"+this.tahun.toString()+"%22";
+                +(year - 1).toString()+"%22&ld=%22"+year.toString()+"%22";
     this.loadData(this.url);
+
+    if (this.nvD3.chart != null) this.nvD3.chart.update();
   }
 
   private loadData(url): void {
-    console.log('on loadData(): void');
     this.dataService.load(this.url)
       .then(data => {
         this.data = this.handleData(data);
         this.options = this.loadOptions.loadOptionPie("");
-        this.getDateArr("https://api.kawaljakarta.org/v1/struktur-ekonomi");
-        console.log(this.dateArr);
-        console.log(this.data);
       });
   }
 
@@ -68,8 +77,8 @@ export class StrukturEkonomiPiePage {
   private getDateArr(url): void {
     this.dataService.load(url)
       .then(data => {
-        this.dateArr = this.selectDistinct('tahun', data);
-        console.log(this.dateArr);
+        this.yearArr = this.selectDistinct('tahun', data);
+        if (this.yearArr[this.yearArr.length-1] != this.tahun) this.yearArr.push(this.tahun);
       });
   }
 
@@ -79,8 +88,13 @@ export class StrukturEkonomiPiePage {
     for (i=0; i<l; i++) {
       if (flags[arrObj[i][distinct]]) continue;
       flags[arrObj[i][distinct]] = true;
-      dataDistinct.push(arrObj[i][distinct]);
+      let tempYear = new Date(arrObj[i][distinct]).getFullYear();
+      dataDistinct.push(tempYear);
     }
     return dataDistinct;
+  }
+
+  onChange() {
+    this.selectDataOfYear(this.tahun);
   }
 }
