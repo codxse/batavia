@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {NavController} from 'ionic-angular';
 import {DataService} from '../../providers/data-service/data-service';
 import {nvD3} from '../../ng2-nvd3';
@@ -17,18 +17,21 @@ Ionic pages and navigation.
 })
 
 export class EksporDanImporLinePage {
+  @ViewChild(nvD3) nvD3: nvD3;
   private url: String;
   private options: any;
   private data: Array<any>;
-  private dateArr: Array<Date>;
+  private dateArr: Array<string>;
+  private dari;
+  private sampai;
+  private origData;
 
   constructor(public nav: NavController, public dataService: DataService, public getOptions: Options) {
 
   }
 
   private ngOnInit(): void {
-    console.log('on ngOnInit')
-    this.url = "https://api.kawaljakarta.org/v1/besar-ekspor-impor/key=tahun&gd='2006'&ld='2013'";
+    this.url = "https://api.kawaljakarta.org/v1/besar-ekspor-impor/";
     this.loadData(this.url);
     this.options = this.getOptions.loadOptionLine("", "Juta USD", null, -5, 55);
   }
@@ -37,17 +40,26 @@ export class EksporDanImporLinePage {
     console.log('on loadData')
     this.dataService.load(url)
       .then(data => {
-        this.data = this.generateData('atribut', 'juta_usd', data, 'tahun', new Date('2006-01-01').getTime(), new Date('2013-01-01').getTime());
+        this.origData = data;
+        this.dateArr = this.generateKeys('tahun', data);
+
+        let dateArrLength = this.dateArr.length;
+        if (dateArrLength <= 5) this.dari = this.dateArr[0];
+        else this.dari = this.dateArr[dateArrLength-6];
+        this.sampai = this.dateArr[dateArrLength-1];
+
+        let startTime = new Date(this.dari).getTime();
+        let endTime = new Date(this.sampai).getTime();
+
+        this.data = this.generateData('atribut', 'juta_usd', data, 'tahun', startTime, endTime);
         this.data[0].key = "Ekspor Melalui Jakarta";
         this.data[1].key = "Ekspor Produk Jakarta";
         this.data[2].key = "Impor Melalui Jakarta";
-        this.dateArr = this.generateKeys('tahun', data);
-        console.log(this.data);
       });
   }
 
   private generateData(keyCat, keyValue, arrObj, dateKey, startTime, endTime): Array<any> {
-    let categories = this.generateKeys(keyCat, arrObj)
+    let categories = this.generateKeys(keyCat, arrObj);
     let parent = this;
     return categories.map(function(item) {
       return {
@@ -83,6 +95,40 @@ export class EksporDanImporLinePage {
       }
     }
     return values;
+  }
+
+  onChangeStartYear() {
+    let startDate = new Date(this.dari);
+    let endDate = new Date(this.sampai);
+    if (startDate > endDate) {
+      let startYear = startDate.getFullYear();
+      endDate.setFullYear(startYear);
+      this.sampai = endDate.toISOString();
+    }
+    let startTime = startDate.getTime();
+    let endTime = endDate.getTime();
+    this.data = this.generateData('atribut', 'juta_usd', this.origData, 'tahun', startTime, endTime);
+    this.data[0].key = "Ekspor Melalui Jakarta";
+    this.data[1].key = "Ekspor Produk Jakarta";
+    this.data[2].key = "Impor Melalui Jakarta";
+    this.nvD3.chart.update();
+  }
+
+  onChangeEndYear() {
+    let startDate = new Date(this.dari);
+    let endDate = new Date(this.sampai);
+    if (endDate < startDate) {
+      let endYear = endDate.getFullYear();
+      startDate.setFullYear(endYear);
+      this.dari = startDate.toISOString();
+    }
+    let startTime = startDate.getTime();
+    let endTime = endDate.getTime();
+    this.data = this.generateData('atribut', 'juta_usd', this.origData, 'tahun', startTime, endTime);
+    this.data[0].key = "Ekspor Melalui Jakarta";
+    this.data[1].key = "Ekspor Produk Jakarta";
+    this.data[2].key = "Impor Melalui Jakarta";
+    this.nvD3.chart.update();
   }
 
 }
