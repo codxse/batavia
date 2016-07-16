@@ -17,20 +17,20 @@ Ionic pages and navigation.
   </div>
   <ion-item>
     <ion-label>Dari</ion-label>
-    <ion-select [(ngModel)]="startMonth">
-      <ion-option *ngFor="let year of yearArr" value="{{year}}">{{year}}</ion-option>
-    </ion-select>
-    <ion-select [(ngModel)]="startYear">
+    <ion-select [(ngModel)]="startMonth" (ngModelChange)="onChange('start')">
       <ion-option *ngFor="let month of monthArr" value="{{month}}">{{getMonthName(month)}}</ion-option>
+    </ion-select>
+    <ion-select [(ngModel)]="startYear" (ngModelChange)="onChange('start')">
+      <ion-option *ngFor="let year of yearArr" value="{{year}}">{{year}}</ion-option>
     </ion-select>
   </ion-item>
   <ion-item>
     <ion-label>Sampai</ion-label>
-    <ion-select [(ngModel)]="endMonth">
-      <ion-option *ngFor="let year of yearArr" value="{{year}}">{{year}}</ion-option>
-    </ion-select>
-    <ion-select [(ngModel)]="endYear">
+    <ion-select [(ngModel)]="endMonth" (ngModelChange)="onChange('end')">
       <ion-option *ngFor="let month of monthArr" value="{{month}}">{{getMonthName(month)}}</ion-option>
+    </ion-select>
+    <ion-select [(ngModel)]="endYear" (ngModelChange)="onChange('end')">
+      <ion-option *ngFor="let year of yearArr" value="{{year}}">{{year}}</ion-option>
     </ion-select>
   </ion-item>
 </ion-content>
