@@ -246,4 +246,43 @@ export class Options{
       }
     }
   }
+
+  loadOptionHistogram(yAxisLabel, height, marginLeft, marginRight, marginBottom) {
+    return {
+      chart: {
+        type: 'discreteBarChart',
+        height: height,
+        margin : {
+          top: 5,
+          right: marginRight,
+          bottom: marginBottom,
+          left: marginLeft
+        },
+        staggerLabels: true,
+        color: function(){
+          return '#FAAC58';
+        },
+        wrapLabels: false,
+        rotateLabels: -53,
+        x: function(d){return d.label;},
+        y: function(d){return d.value + (1e-10);},
+        showValues: true,
+        valueFormat: function(d){
+          return d3.format(',.2f')(d);
+        },
+        duration: 500,
+        xAxis: {
+          axisLabel: '',
+          tickPadding: 5
+        },
+        yAxis: {
+          axisLabel: yAxisLabel,
+          axisLabelDistance: -10,
+          showMaxMin: false,
+          tickPadding: 5
+        }
+      }
+    }
+  }
+
 }
