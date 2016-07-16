@@ -21,10 +21,10 @@
   --->
   <ion-item>
   <ion-label>Mulai</ion-label>
-  <ion-datetime displayFormat="DD-MM-YYYY" pickerFormat="DD MMM YYYY"></ion-datetime>
+  <ion-datetime displayFormat="DD-MM-YYYY" pickerFormat="DD MMM YYYY" [(ngModel)]="startDate" (ngModelChange)="onChange(start)"></ion-datetime>
 </ion-item>
 <ion-item>
   <ion-label>Sampai</ion-label>
-  <ion-datetime displayFormat="DD-MM-YYYY" pickerFormat="DD MMM YYYY"></ion-datetime>
+  <ion-datetime displayFormat="DD-MM-YYYY" pickerFormat="DD MMM YYYY" [(ngModel)]="endDate" (ngModelChange)="onChange(end)"></ion-datetime>
 </ion-item>
 </ion-content>

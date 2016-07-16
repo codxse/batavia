@@ -23,8 +23,7 @@ export class HargaGrosiranLinePage {
   private data: Array<any>;
   private startDate: string;
   private endDate: string;
-  private dari;
-  private sampai;
+  private dateArr: Array<any>;
   private origData;
 
   constructor(public nav: NavController, public dataService: DataService, public getOptions: Options) {
@@ -32,24 +31,25 @@ export class HargaGrosiranLinePage {
   }
 
   private ngOnInit(): void {
-    this.startDate = '2015-03-01';
-    this.endDate = '2015-11-18';
-    this.getMinDateApi();
-    this.getMinDateApi();
-    this.url = "https://api.kawaljakarta.org/v1/perkembangan-harga-grosir/key=tanggal&gd=" + this.startDate + "&ld=" + this.endDate;
+    this.url = "https://api.kawaljakarta.org/v1/perkembangan-harga-grosir/";
     this.loadData(this.url);
     this.options = this.getOptions.loadOptionLine("", "Rp", "%d %b %y", null, -12, 52);
   }
 
   private loadData(url): void {
-    console.log('on loadData')
     this.dataService.load(url)
     .then(data => {
-      // this.origData = data;
-      // this.dateArr = this.generateKeys('tanggal', data);
+      this.origData = data;
+
+      // sort data dari api berdasarkan tanggal
+      this.origData.sort(function(a,b) {
+        let dateA = new Date(a.tanggal).getTime();
+        let dateB = new Date(b.tanggal).getTime();
+        return dateA-dateB;
+      });
+      this.dateArr = this.generateKeys('tanggal', this.origData);
       // this.yearArr = this.getYearArr(this.dateArr);
       // this.monthArr = this.getMonthArr(this.dateArr);
-      // console.log(this.yearArr);
       // console.log(this.monthArr);
       // let dateArrLength = this.dateArr.length;
       // if (dateArrLength <= 5) {
@@ -59,14 +59,13 @@ export class HargaGrosiranLinePage {
       // }
       // this.sampai = this.dateArr[dateArrLength-1];
       //
+      this.startDate = this.dateArr[0];
+      this.endDate = this.dateArr[this.dateArr.length-1];
       let startTime = new Date(this.startDate).getTime();
       let endTime = new Date(this.endDate).getTime();
 
-      this.data = this.generateData('komoditas', 'harga', data, 'tanggal', startTime, endTime);
+      this.data = this.generateData('komoditas', 'harga', this.origData, 'tanggal', startTime, endTime);
       console.log(this.data);
-      // this.data[0].key = "Ekspor Melalui Jakarta";
-      // this.data[1].key = "Ekspor Produk Jakarta";
-      // this.data[2].key = "Impor Melalui Jakarta";
     });
   }
 
@@ -143,8 +142,6 @@ export class HargaGrosiranLinePage {
     let values = [], l = arrObj.length, i;
     for (i=0; i<l; i++) {
       let arrObjTime = new Date(arrObj[i][dateKey]).getTime();
-      // let startDateTime = new Date(startDate).getTime();
-      // let endDateTime = new Date(endDate).getTime();
       if ((arrObj[i][keyCat] == valCat) && (startTime <= arrObjTime) && (arrObjTime <= endTime)) {
         values.push(
           {
@@ -157,38 +154,21 @@ export class HargaGrosiranLinePage {
     return values;
   }
 
-  onChangeStartYear() {
-    let startDate = new Date(this.dari);
-    let endDate = new Date(this.sampai);
-    if (startDate > endDate) {
-      let startYear = startDate.getFullYear();
-      endDate.setFullYear(startYear);
-      this.sampai = endDate.toISOString();
+  onChange(ngModel) {
+    if (ngModel == 'start') {
+      if (new Date(this.startDate) > new Date(this.endDate)) {
+        this.endDate = this.startDate;
+      }
+    } else {
+      if (new Date(this.endDate) < new Date(this.startDate)) {
+        this.startDate = this.endDate;
+      }
     }
-    let startTime = startDate.getTime();
-    let endTime = endDate.getTime();
-    this.data = this.generateData('atribut', 'juta_usd', this.origData, 'tahun', startTime, endTime);
-    this.data[0].key = "Ekspor Melalui Jakarta";
-    this.data[1].key = "Ekspor Produk Jakarta";
-    this.data[2].key = "Impor Melalui Jakarta";
-    this.nvD3.chart.update();
-  }
 
-  onChangeEndYear() {
-    let startDate = new Date(this.dari);
-    let endDate = new Date(this.sampai);
-    if (endDate < startDate) {
-      let endYear = endDate.getFullYear();
-      startDate.setFullYear(endYear);
-      this.dari = startDate.toISOString();
-    }
-    let startTime = startDate.getTime();
-    let endTime = endDate.getTime();
-    this.data = this.generateData('atribut', 'juta_usd', this.origData, 'tahun', startTime, endTime);
-    this.data[0].key = "Ekspor Melalui Jakarta";
-    this.data[1].key = "Ekspor Produk Jakarta";
-    this.data[2].key = "Impor Melalui Jakarta";
-    this.nvD3.chart.update();
+    let startTime = new Date(this.startDate).getTime();
+    let endTime = new Date(this.endDate).getTime();
+
+    this.data = this.generateData('komoditas', 'harga', this.origData, 'tanggal', startTime, endTime);
   }
 
 }
