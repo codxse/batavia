@@ -147,7 +147,7 @@ export class NilaiImporProdukLinePage {
         values.push(
           {
             x: arrObjTime,
-            y: arrObj[i][keyValue]
+            y: Math.round(arrObj[i][keyValue])
           }
         )
       }
