@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {NavController} from 'ionic-angular';
-import {EksporDanImporPage} from '../ekspor-dan-impor/ekspor-dan-impor';
+import {EksporDanImporLinePage} from '../ekspor-dan-impor-line/ekspor-dan-impor-line';
 import {VolumeDanNilaiEksporPage} from '../volume-dan-nilai-ekspor/volume-dan-nilai-ekspor';
 import {NilaiImporProdukPage} from '../nilai-impor-produk/nilai-impor-produk';
 import {HargaPanganKonsumenPage} from '../harga-pangan-konsumen/harga-pangan-konsumen';
@@ -21,7 +21,7 @@ export class MikroMenuPage {
     this.pages = [
       {
         title: 'Ekspor dan Impor',
-        component: EksporDanImporPage,
+        component: EksporDanImporLinePage,
         category: 'Ekspor Impor',
         data: 6,
         image: 'home'
@@ -52,13 +52,6 @@ export class MikroMenuPage {
         component: HargaGrosirDiPasarIndukPage,
         category: 'Komoditas',
         data: 11,
-        image: 'home'
-      },
-      {
-        title: 'Realisasi APBD',
-        component: RealisasiApbdPage,
-        category: 'APBD',
-        data: 13,
         image: 'home'
       }
     ];
