@@ -4,11 +4,14 @@
   See http://ionicframework.com/docs/v2/components/#navigation for more info on
   Ionic pages and navigation.
 -->
-<ion-navbar *navbar>
-  <ion-title>harga-grosiran-line</ion-title>
+<ion-navbar *navbar primary>
+  <ion-title>Harga Grosiran</ion-title>
 </ion-navbar>
 
 <ion-content padding class="harga-grosiran-line">
+  <div>
+    <nvd3 [options]="options" [data]="data"></nvd3>
+  </div>
   <!---
     the doc: http://ionicframework.com/docs/v2/components/#datetime
     http://ionicframework.com/docs/v2/api/components/datetime/DateTime/
