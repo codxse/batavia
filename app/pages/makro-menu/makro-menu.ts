@@ -5,7 +5,7 @@ import {UpahMinimumProvinsiTabPage} from '../upah-minimum-provinsi-tab/upah-mini
 import {PertumbuhanEkonomiTabPage} from '../pertumbuhan-ekonomi-tab/pertumbuhan-ekonomi-tab';
 import {TingkatInflasiTabPage} from '../tingkat-inflasi-tab/tingkat-inflasi-tab';
 import {KomponenInflasiTabPage} from '../komponen-inflasi-tab/komponen-inflasi-tab';
-import {StrukturEkonomiPage} from '../struktur-ekonomi/struktur-ekonomi';
+import {StrukturEkonomiPiePage} from '../struktur-ekonomi-pie/struktur-ekonomi-pie';
 import {PendapatanPerkapitaTabPage} from '../pendapatan-perkapita-tab/pendapatan-perkapita-tab';
 
 @Component({
@@ -57,7 +57,7 @@ export class MakroMenuPage {
       },
       {
         title: 'Struktur Ekonomi',
-        component: StrukturEkonomiPage,
+        component: StrukturEkonomiPiePage,
         category: 'Perekonomian',
         data: 9,
         image: 'home'
