@@ -3,14 +3,12 @@ import {NavController} from 'ionic-angular';
 import {EksporDanImporLinePage} from '../ekspor-dan-impor-line/ekspor-dan-impor-line';
 import {VolumeDanNilaiEksporPage} from '../volume-dan-nilai-ekspor/volume-dan-nilai-ekspor';
 import {NilaiImporProdukTabPage} from '../nilai-impor-produk-tab/nilai-impor-produk-tab';
-import {HargaPanganKonsumenPage} from '../harga-pangan-konsumen/harga-pangan-konsumen';
+import {HargaPanganKonsumenTabPage} from '../harga-pangan-konsumen-tab/harga-pangan-konsumen-tab';
 import {HargaGrosirDiPasarIndukPage} from '../harga-grosir-di-pasar-induk/harga-grosir-di-pasar-induk';
-import {RealisasiApbdPage} from '../realisasi-apbd/realisasi-apbd';
 
 @Component({
   templateUrl: 'build/pages/mikro-menu/mikro-menu.html',
 })
-
 export class MikroMenuPage {
 
   pages: Array<{title: string, component: any, category: string, data: Number, image: string}>
@@ -41,14 +39,14 @@ export class MikroMenuPage {
         image: 'home'
       },
       {
-        title: 'Harga Pangan Konsumen',
-        component: HargaPanganKonsumenPage,
+        title: 'Pangan Konsumen',
+        component: HargaPanganKonsumenTabPage,
         category: 'Komoditas',
         data: 10,
         image: 'home'
       },
       {
-        title: 'Harga Grosir di Pasar Induk',
+        title: 'Harga Grosiran',
         component: HargaGrosirDiPasarIndukPage,
         category: 'Komoditas',
         data: 11,

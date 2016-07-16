@@ -247,11 +247,11 @@ export class Options{
     }
   }
 
-  loadOptionHistogram(yAxisLabel, height, marginLeft, marginRight, marginBottom) {
+  loadOptionHistogram(yAxisLabel, marginLeft, marginRight, marginBottom) {
     return {
       chart: {
         type: 'discreteBarChart',
-        height: height,
+        height: 450,
         margin : {
           top: 5,
           right: marginRight,

@@ -36,7 +36,7 @@ export class NilaiImporProdukHistogramPage {
       .then(data => {
         this.data = this.handleData(data);
         console.log(this.data);
-        this.options = this.loadOptions.loadOptionHistogram("frekuensi", 450, 55, 40, 55);
+        this.options = this.loadOptions.loadOptionHistogram("frekuensi", 55, 40, 55);
       });
   }
 
