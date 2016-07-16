@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import {NavController} from 'ionic-angular';
 import {EksporDanImporLinePage} from '../ekspor-dan-impor-line/ekspor-dan-impor-line';
 import {VolumeDanNilaiEksporPage} from '../volume-dan-nilai-ekspor/volume-dan-nilai-ekspor';
-import {NilaiImporProdukPage} from '../nilai-impor-produk/nilai-impor-produk';
+import {NilaiImporProdukTabPage} from '../nilai-impor-produk-tab/nilai-impor-produk-tab';
 import {HargaPanganKonsumenPage} from '../harga-pangan-konsumen/harga-pangan-konsumen';
 import {HargaGrosirDiPasarIndukPage} from '../harga-grosir-di-pasar-induk/harga-grosir-di-pasar-induk';
 import {RealisasiApbdPage} from '../realisasi-apbd/realisasi-apbd';
@@ -35,7 +35,7 @@ export class MikroMenuPage {
       },
       {
         title: 'Nilai Impor Produk',
-        component: NilaiImporProdukPage,
+        component: NilaiImporProdukTabPage,
         category: 'Ekspor Impor',
         data: 8,
         image: 'home'

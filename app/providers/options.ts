@@ -132,7 +132,7 @@ export class Options{
         yAxis: {
           axisLabel: yAxisLabel,
           axisLabelDistance: yaxisLabelDistance,
-          tickFormat: function(d){
+          tickFormat: function(d) {
             return d3.format('.02f')(d);
           },
           showMaxMin: false
