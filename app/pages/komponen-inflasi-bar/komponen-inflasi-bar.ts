@@ -30,11 +30,7 @@ export class KomponenInflasiBarPage {
   private ngOnInit(): void {
     this.tahun = new Date().getFullYear();
     this.selectDataOfYear(this.tahun);
-    this.yearArr = this.generateYears(this.tahun);
-    // this.tahun = 2012;
-    // this.url = "https://api.kawaljakarta.org/v1/komponen-inflasi/key=tahun&gd=%22"
-    //             +(this.tahun - 1).toString()+"%22&ld=%22"+this.tahun.toString()+"%22";
-    // this.loadData(this.url);
+    this.getDateArr("https://api.kawaljakarta.org/v1/komponen-inflasi");
   }
 
   // year is in Full Year format
@@ -74,15 +70,24 @@ export class KomponenInflasiBarPage {
   }
 
   // get unique array of tahun
-  // private selectDistinct(distinct, arrObj): Array<any> {
-  //   var flags = [], dataDistinct = [], l = arrObj.length, i;
-  //   for (i=0; i<l; i++) {
-  //     if (flags[arrObj[i][distinct]]) continue;
-  //     flags[arrObj[i][distinct]] = true;
-  //     dataDistinct.push(arrObj[i][distinct]);
-  //   }
-  //   return dataDistinct;
-  // }
+  private getDateArr(url): void {
+    this.dataService.load(url)
+      .then(data => {
+        this.yearArr = this.selectDistinct('tahun', data);
+        if (this.yearArr[this.yearArr.length-1] != this.tahun) this.yearArr.push(this.tahun);
+      });
+  }
+
+  private selectDistinct(distinct, arrObj): Array<any> {
+    var flags = [], dataDistinct = [], l = arrObj.length, i;
+    for (i=0; i<l; i++) {
+      if (flags[arrObj[i][distinct]]) continue;
+      flags[arrObj[i][distinct]] = true;
+      let tempYear = new Date(arrObj[i][distinct]).getFullYear();
+      dataDistinct.push(tempYear);
+    }
+    return dataDistinct;
+  }
 
   private generateYears(latestYear): Array<Number> {
     let arr = [];
