@@ -18,8 +18,8 @@
   <ion-list>
     <ion-item>
     <ion-label>Tahun</ion-label>
-    <ion-select [(ngModel)]="tahun">
-      <ion-option *ngFor="let tahun of dateArr" value="{{tahun}}">{{tahun.substring(0,4)}}</ion-option>
+    <ion-select [(ngModel)]="tahun" (ngModelChange)="onChange()">
+      <ion-option *ngFor="let tahun of yearArr" value="{{tahun}}">{{tahun}}</ion-option>
     </ion-select>
   </ion-item>
   </ion-list>
