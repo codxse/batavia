@@ -17,13 +17,11 @@ Ionic pages and navigation.
   </div>
   <ion-item>
     <ion-label>Rentang</ion-label>
-    <ion-select [(ngModel)]="dari">
-      <ion-option value="2008-01-01T00:00:00.000Z" selected>2008</ion-option>
+    <ion-select [(ngModel)]="dari" (ngModelChange)="onChangeStartYear()">
       <ion-option *ngFor="let date of dateArr" value="{{date}}">{{date | date:'y'}}</ion-option>
     </ion-select>
-    <ion-select [(ngModel)]="sampai">
+    <ion-select [(ngModel)]="sampai" (ngModelChange)="onChangeEndYear()">
       <ion-option *ngFor="let date of dateArr" value="{{date}}">{{date | date:'y'}}</ion-option>
-      <ion-option value="2014-01-01T00:00:00.000Z" selected>2014</ion-option>
     </ion-select>
   </ion-item>
 </ion-content>
