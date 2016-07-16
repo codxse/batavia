@@ -268,7 +268,7 @@ export class Options{
         y: function(d){return d.value + (1e-10);},
         showValues: true,
         valueFormat: function(d){
-          return d3.format(',.2f')(d);
+          return d3.format(',.0f')(d);
         },
         duration: 500,
         xAxis: {
@@ -277,9 +277,12 @@ export class Options{
         },
         yAxis: {
           axisLabel: yAxisLabel,
-          axisLabelDistance: -10,
+          axisLabelDistance: -18,
           showMaxMin: false,
-          tickPadding: 5
+          tickPadding: 5,
+          tickFormat: function(d){
+            return d3.format(',.0f')(d);
+          }
         }
       }
     }
