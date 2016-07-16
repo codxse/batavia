@@ -58,7 +58,7 @@ export class Options{
         margin : {
           top: 10,
           right: 45,
-          bottom: 25,
+          bottom: 30,
           left: marginLeft
         },
         showLegend: false,
