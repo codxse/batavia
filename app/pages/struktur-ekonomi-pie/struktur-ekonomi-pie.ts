@@ -28,14 +28,8 @@ export class StrukturEkonomiPiePage {
   }
 
   private ngOnInit(): void {
-    this.tahun = new Date().getFullYear();
-    this.selectDataOfYear(this.tahun);
+    this.getMaxYearOfApi();
     this.getDateArr("https://api.kawaljakarta.org/v1/struktur-ekonomi");
-    // console.log('on ngOnInit');
-    // this.tahun = 2012;
-    // this.url = "https://api.kawaljakarta.org/v1/struktur-ekonomi/key=tahun&gd=%22"
-    //             +(this.tahun - 1).toString()+"%22&ld=%22"+this.tahun.toString()+"%22";
-    // this.loadData(this.url);
   }
 
   // year is in Full Year format
@@ -78,7 +72,11 @@ export class StrukturEkonomiPiePage {
     this.dataService.load(url)
       .then(data => {
         this.yearArr = this.selectDistinct('tahun', data);
-        if (this.yearArr[this.yearArr.length-1] != this.tahun) this.yearArr.push(this.tahun);
+        if (this.tahun != undefined) {
+          if (this.yearArr[this.yearArr.length-1] != this.tahun) this.yearArr.push(this.tahun);
+        }
+        // console.log(this.tahun);
+        // console.log(this.yearArr);
       });
   }
 
@@ -92,6 +90,16 @@ export class StrukturEkonomiPiePage {
       dataDistinct.push(tempYear);
     }
     return dataDistinct;
+  }
+
+  // get max tahun of api
+  private getMaxYearOfApi(): void {
+    console.log('on getMaxYearOfApi');
+    this.dataService.load('https://api.kawaljakarta.org/v1/struktur-ekonomi/key=tahun&get=max')
+      .then(data => {
+        this.tahun = new Date(data['tahun']).getFullYear();
+        this.selectDataOfYear(this.tahun);
+      });
   }
 
   onChange() {
