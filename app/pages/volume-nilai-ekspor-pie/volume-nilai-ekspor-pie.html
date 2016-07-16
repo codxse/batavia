@@ -12,5 +12,22 @@
 </ion-navbar>
 
 <ion-content padding class="volume-nilai-ekspor-pie">
-
-</ion-content>
+  <div>
+    <nvd3 [options]="options" [data]="data"></nvd3>
+  </div>
+  <ion-list>
+    <ion-item>
+      <ion-label>Kategori</ion-label>
+      <ion-select [(ngModel)]="kategori">
+        <ion-option value="nilai">Nilai</ion-option>
+        <ion-option value="volume">Volume</ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+    <ion-label>Tahun</ion-label>
+    <ion-select [(ngModel)]="tahun">
+      <ion-option *ngFor="let tahun of tahunArr" value="{{tahun}}">{{tahun.substring(0,4)}}</ion-option>
+    </ion-select>
+  </ion-item>
+  </ion-list>
+  </ion-content>
