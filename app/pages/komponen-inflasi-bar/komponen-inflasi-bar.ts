@@ -28,8 +28,7 @@ export class KomponenInflasiBarPage {
   }
 
   private ngOnInit(): void {
-    this.tahun = new Date().getFullYear();
-    this.selectDataOfYear(this.tahun);
+    this.getMaxYearOfApi();
     this.getDateArr("https://api.kawaljakarta.org/v1/komponen-inflasi");
   }
 
@@ -74,7 +73,11 @@ export class KomponenInflasiBarPage {
     this.dataService.load(url)
       .then(data => {
         this.yearArr = this.selectDistinct('tahun', data);
-        if (this.yearArr[this.yearArr.length-1] != this.tahun) this.yearArr.push(this.tahun);
+        if (this.tahun != undefined) {
+          if (this.yearArr[this.yearArr.length-1] != this.tahun) this.yearArr.push(this.tahun);
+        }
+        // console.log(this.tahun);
+        // console.log(this.yearArr);
       });
   }
 
@@ -97,6 +100,16 @@ export class KomponenInflasiBarPage {
         tempYear--;
     }
     return arr;
+  }
+
+  // get max tahun of api
+  private getMaxYearOfApi(): void {
+    console.log('on getMaxYearOfApi');
+    this.dataService.load('https://api.kawaljakarta.org/v1/komponen-inflasi/key=tahun&get=max')
+      .then(data => {
+        this.tahun = new Date(data['tahun']).getFullYear();
+        this.selectDataOfYear(this.tahun);
+      });
   }
 
   onChange() {
