@@ -8,4 +8,5 @@ platforms/
 plugins/
 *.swp
 .DS_Store
+npm-debug.log
 Thumbs.db

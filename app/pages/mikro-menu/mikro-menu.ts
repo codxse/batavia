@@ -4,7 +4,7 @@ import {EksporDanImporLinePage} from '../ekspor-dan-impor-line/ekspor-dan-impor-
 import {VolumeDanNilaiEksporPage} from '../volume-dan-nilai-ekspor/volume-dan-nilai-ekspor';
 import {NilaiImporProdukTabPage} from '../nilai-impor-produk-tab/nilai-impor-produk-tab';
 import {HargaPanganKonsumenTabPage} from '../harga-pangan-konsumen-tab/harga-pangan-konsumen-tab';
-import {HargaGrosirDiPasarIndukPage} from '../harga-grosir-di-pasar-induk/harga-grosir-di-pasar-induk';
+import {HargaGrosiranTabPage} from '../harga-grosiran-tab/harga-grosiran-tab';
 
 @Component({
   templateUrl: 'build/pages/mikro-menu/mikro-menu.html',
@@ -47,7 +47,7 @@ export class MikroMenuPage {
       },
       {
         title: 'Harga Grosiran',
-        component: HargaGrosirDiPasarIndukPage,
+        component: HargaGrosiranTabPage,
         category: 'Komoditas',
         data: 11,
         image: 'home'
