@@ -21,42 +21,46 @@ export class VolumeNilaiEksporPiePage {
   private url: string;
   private nilaiObj: any;
   private volumeObj: any;
+  private kategori;
+  private tahun;
+  private origData;
 
   constructor(public nav: NavController, public dataService: DataService, public getOptions: Options) {
 
   }
 
   private ngOnInit(): void {
-    console.log('on ngOnInit');
     this.url = "https://api.kawaljakarta.org/v1/volume-dan-nilai-ekspor/";
     this.loadData(this.url);
   }
 
   private loadData(url): void {
-    console.log('on loadData')
     this.dataService.load(url)
     .then(data => {
       // lihat aja jsonnya (generateDataArr(data)), gw udah formating semudah mungkin buat gak akses api
-      console.log(this.generateDataArr(data));
-      this.nilaiObj = this.generateDataArr(data)[0];
-      this.volumeObj = this.generateDataArr(data)[1];
-      console.log(this.nilaiObj.nilai[1].values);
-      console.log(this.volumeObj.volume[1].values);
-      this.data = this.nilaiObj.nilai[1].values;
+      this.origData = this.generateDataArr(data);
+      this.kategori = 0; //Default kategori = Nilai
+      this.tahun = this.tahunArr[this.tahunArr.length-1];
+      this.data = this.selectDataOfYear(this.origData[this.kategori], this.tahun);
       this.options = this.getOptions.loadOptionPie("");
-      //console.log(this.data)
+
     });
   }
 
-  // onChange(ngModel) {
-  //   if (ngModel == 'tahun') {
-  //     this.selectPieOfYear(this.tahun);
-  //   }
-  //
-  //   if (ngModel == 'kategori') {
-  //     this.loadData(this.kategori);
-  //   }
-  // }
+  private selectDataOfYear(data, year) {
+    let fullYear = new Date(year).getFullYear();
+    console.log(data);
+    for (let i = 0; i < data.items.length; i++) {
+        if (data.items[i].tahun == fullYear) {
+          return data.items[i].values;
+        }
+    }
+  }
+
+  onChange() {
+    this.data = this.selectDataOfYear(this.origData[this.kategori], this.tahun);
+    this.nvD3.chart.update();
+  }
 
   private selectDistinct(distinct, arrObj): Array<any> {
     var flags = [], dataDistinct = [], l = arrObj.length, i;
@@ -114,8 +118,8 @@ export class VolumeNilaiEksporPiePage {
   private generateDataArr(data): Array<any> {
     let parent = this;
     return [
-      { nilai: parent.generateData('tahun', data, 'grup', 'nilai') },
-      { volume: parent.generateData('tahun', data, 'grup', 'volume') }
+      { type:'nilai', items: parent.generateData('tahun', data, 'grup', 'nilai') },
+      { type:'volume', items: parent.generateData('tahun', data, 'grup', 'volume') }
     ]
   }
 
