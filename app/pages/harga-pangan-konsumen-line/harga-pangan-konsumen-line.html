@@ -17,26 +17,26 @@ Ionic pages and navigation.
   </div>
   <ion-item>
     <ion-label>Wilayah</ion-label>
-    <ion-select [(ngModel)]="startMonth">
+    <ion-select [(ngModel)]="region" (ngModelChange)="onChangeRegion()">
       <ion-option *ngFor="let wilayah of wilayahArr" value="{{wilayah}}">{{wilayah}}</ion-option>
     </ion-select>
   </ion-item>
   <ion-item>
     <ion-label>Dari</ion-label>
-    <ion-select [(ngModel)]="startMonth">
-      <ion-option *ngFor="let year of yearArr" value="{{year}}">{{year}}</ion-option>
-    </ion-select>
-    <ion-select [(ngModel)]="startYear">
+    <ion-select [(ngModel)]="startMonth" (ngModelChange)="onChangeDate('start')">
       <ion-option *ngFor="let month of monthArr" value="{{month}}">{{getMonthName(month)}}</ion-option>
+    </ion-select>
+    <ion-select [(ngModel)]="startYear" (ngModelChange)="onChangeDate('start')">
+      <ion-option *ngFor="let year of yearArr" value="{{year}}">{{year}}</ion-option>
     </ion-select>
   </ion-item>
   <ion-item>
     <ion-label>Sampai</ion-label>
-    <ion-select [(ngModel)]="endMonth">
-      <ion-option *ngFor="let year of yearArr" value="{{year}}">{{year}}</ion-option>
-    </ion-select>
-    <ion-select [(ngModel)]="endYear">
+    <ion-select [(ngModel)]="endMonth" (ngModelChange)="onChangeDate('end')">
       <ion-option *ngFor="let month of monthArr" value="{{month}}">{{getMonthName(month)}}</ion-option>
+    </ion-select>
+    <ion-select [(ngModel)]="endYear" (ngModelChange)="onChangeDate('end')">
+      <ion-option *ngFor="let year of yearArr" value="{{year}}">{{year}}</ion-option>
     </ion-select>
   </ion-item>
 </ion-content>
