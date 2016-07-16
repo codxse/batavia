@@ -16,9 +16,10 @@ import {Options} from '../../providers/options';
   templateUrl: 'build/pages/komponen-inflasi-bar/komponen-inflasi-bar.html',
 })
 export class KomponenInflasiBarPage {
+  @ViewChild(nvD3) nvD3: nvD3;
   url: String;
   data: Array<any>;
-  dateArr: Array<Date>;
+  yearArr: Array<Number>;
   options: any;
   tahun: any;
 
@@ -27,22 +28,29 @@ export class KomponenInflasiBarPage {
   }
 
   private ngOnInit(): void {
-    console.log('on ngOnInit');
-    this.tahun = 2012;
+    this.tahun = new Date().getFullYear();
+    this.selectDataOfYear(this.tahun);
+    this.yearArr = this.generateYears(this.tahun);
+    // this.tahun = 2012;
+    // this.url = "https://api.kawaljakarta.org/v1/komponen-inflasi/key=tahun&gd=%22"
+    //             +(this.tahun - 1).toString()+"%22&ld=%22"+this.tahun.toString()+"%22";
+    // this.loadData(this.url);
+  }
+
+  // year is in Full Year format
+  private selectDataOfYear(year) {
     this.url = "https://api.kawaljakarta.org/v1/komponen-inflasi/key=tahun&gd=%22"
-                +(this.tahun - 1).toString()+"%22&ld=%22"+this.tahun.toString()+"%22";
+                +(year - 1).toString()+"%22&ld=%22"+year.toString()+"%22";
     this.loadData(this.url);
+
+    if (this.nvD3.chart != null) this.nvD3.chart.update();
   }
 
   private loadData(url): void {
-    console.log('on loadData(): void');
     this.dataService.load(this.url)
       .then(data => {
         this.data = this.handleData(data);
         this.options = this.loadOptions.loadOptionBar("Inflasi (%)", 450, 55, 40, 125);
-        this.dateArr = this.selectDistinct("tahun", data);
-        console.log(this.dateArr);
-        console.log(this.data);
       });
   }
 
@@ -66,13 +74,28 @@ export class KomponenInflasiBarPage {
   }
 
   // get unique array of tahun
-  private selectDistinct(distinct, arrObj): Array<any> {
-    var flags = [], dataDistinct = [], l = arrObj.length, i;
-    for (i=0; i<l; i++) {
-      if (flags[arrObj[i][distinct]]) continue;
-      flags[arrObj[i][distinct]] = true;
-      dataDistinct.push(arrObj[i][distinct]);
+  // private selectDistinct(distinct, arrObj): Array<any> {
+  //   var flags = [], dataDistinct = [], l = arrObj.length, i;
+  //   for (i=0; i<l; i++) {
+  //     if (flags[arrObj[i][distinct]]) continue;
+  //     flags[arrObj[i][distinct]] = true;
+  //     dataDistinct.push(arrObj[i][distinct]);
+  //   }
+  //   return dataDistinct;
+  // }
+
+  private generateYears(latestYear): Array<Number> {
+    let arr = [];
+    let tempYear = latestYear;
+    for (let i = 9; i >= 0; i--) {
+        arr[i] = tempYear;
+        tempYear--;
     }
-    return dataDistinct;
+    return arr;
   }
+
+  onChange() {
+    this.selectDataOfYear(this.tahun);
+  }
+
 }
