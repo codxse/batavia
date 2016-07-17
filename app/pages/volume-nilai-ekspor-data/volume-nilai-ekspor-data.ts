@@ -15,6 +15,7 @@ import {DataService} from '../../providers/data-service/data-service';
 export class VolumeNilaiEksporDataPage {
   private url: string;
   private data: Array<any>;
+  private origData: Array<any>;
 
   constructor(public nav: NavController, public dataService: DataService) {
     console.log('on constructor');
@@ -29,8 +30,9 @@ export class VolumeNilaiEksporDataPage {
 
   private loadData(url): void {
     this.dataService.load(url).then(data => {
-      this.data = this.generateData(data);
-      console.log(this.data);
+      this.origData = this.generateData(data);
+      this.data = this.origData;
+      // console.log(this.data);
     });
   }
 
@@ -52,8 +54,14 @@ export class VolumeNilaiEksporDataPage {
     return objects;
   }
 
+  // Fungsi ini dipake oleh getItems untuk mereset this.data ke data semula yang dari api untuk kemudian di filter
+  // Oleh karena itu, fungsi ini akan dipanggil setiap kali user ngetik karakter
+  // Jadi lebih baik data dari api disimpan ke variable this.origData
+  // this.data nanti tinggal di-reset dengan cara di-assign dengan isi dari this.origData
+  // Sehingga ga perlu panggil api tiap user ngetik karakter
   initializeItems() {
-    this.loadData(this.url);
+    // this.loadData(this.url);
+    this.data = this.origData;
   }
 
   getItems(ev) {
@@ -61,12 +69,21 @@ export class VolumeNilaiEksporDataPage {
     this.initializeItems();
 
     // set val to the value of the ev target
-    var val = ev.target.value;
+    // var val = ev.target.value;
+    // setelah di console.log(ev) value dari ev ada di ev.value, bukan di ev.target.value
+    // ga tau apakah dokumentasi ionicnya belum update atau salah setting
+    var val = ev.value;
 
     // if the value is an empty string don't filter the items
     if (val && val.trim() != '') {
+      // this.data = this.data.filter((item) => {
+      //   return (item.toLowerCase().indexOf(val.toLowerCase()) > -1);
+      // })
       this.data = this.data.filter((item) => {
-        return (item.toLowerCase().indexOf(val.toLowerCase()) > -1);
+        // Kalo di contohnya, item dari this.data adalah string
+        // Sedangkan di sini, item dari this.data adalah object
+        // sehingga this.data perlu difilter terhadap item.cluster dan item.name
+        return (item.cluster.toLowerCase().indexOf(val.toLowerCase()) > -1 || item.name.toLowerCase().indexOf(val.toLowerCase()) > -1)
       })
     }
   }
