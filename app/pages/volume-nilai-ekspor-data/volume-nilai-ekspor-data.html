@@ -1,0 +1,21 @@
+<!--
+  Generated template for the VolumeNilaiEksporDataPage page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-navbar *navbar primary>
+  <button menuToggle>
+    <ion-icon name="menu"></ion-icon>
+  </button>
+  <ion-title>Volume & Nilai Ekspor</ion-title>
+</ion-navbar>
+
+<ion-content padding class="volume-nilai-ekspor-data">
+    <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
+    <ion-list>
+      <ion-item *ngFor="let item of data">
+        {{ item.cluster }}: {{item.name}}
+      </ion-item>
+    </ion-list>
+</ion-content>

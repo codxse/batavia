@@ -3,6 +3,7 @@ import {NavController, NavParams} from 'ionic-angular';
 import {ViewController, Platform} from 'ionic-angular';
 import {VolumeNilaiEksporPiePage} from '../volume-nilai-ekspor-pie/volume-nilai-ekspor-pie';
 import {VolumeNilaiEksporScatterPage} from '../volume-nilai-ekspor-scatter/volume-nilai-ekspor-scatter';
+import {VolumeNilaiEksporDataPage} from '../volume-nilai-ekspor-data/volume-nilai-ekspor-data';
 
 @Component({
   template: `
@@ -28,9 +29,11 @@ class TabTextPage {
     <ion-tabs class="tabs-basic">
       <ion-tab tabTitle="Pie" [root]="tabOne"></ion-tab>
       <ion-tab tabTitle="Scatter" [root]="tabTwo"></ion-tab>
+      <ion-tab tabTitle="Data" [root]="tabThree"></ion-tab>
     </ion-tabs>
 `})
 export class VolumeNilaiEksporTabPage {
   tabOne = VolumeNilaiEksporPiePage;
   tabTwo = VolumeNilaiEksporScatterPage;
+  tabThree = VolumeNilaiEksporDataPage;
 }
