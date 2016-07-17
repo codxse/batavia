@@ -16,6 +16,8 @@
     <ion-list>
       <ion-item *ngFor="let item of data">
         {{ item.cluster }}: {{item.name}}
+        <p> <ion-icon name="logo-usd"></ion-icon> {{item.nilai}} usd,&nbsp;&nbsp;&nbsp;&nbsp;
+          <ion-icon name="stats"></ion-icon> {{item.volume}} ton</p>
       </ion-item>
     </ion-list>
 </ion-content>

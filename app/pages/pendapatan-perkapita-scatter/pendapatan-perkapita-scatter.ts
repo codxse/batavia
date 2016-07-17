@@ -15,7 +15,7 @@ declare let d3: any;
 @Component({
   directives: [nvD3],
   providers: [DataService, Options],
-  templateUrl: 'build/pages/pertumbuhan-ekonomi-scatter/pertumbuhan-ekonomi-scatter.html',
+  templateUrl: 'build/pages/pendapatan-perkapita-scatter/pendapatan-perkapita-scatter.html',
 })
 export class PendapatanPerkapitaScatterPage {
   urlData = "https://api.kawaljakarta.org/v1/pendapatan-perkapita/data?keterangan=Bukan%20Outlier";

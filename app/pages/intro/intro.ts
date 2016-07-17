@@ -10,18 +10,18 @@ export class IntroPage {
 
   slides = [
     {
-      title: "Welcome to the Docs!",
-      description: "The <b>Ionic Component Documentation</b> showcases a number of useful components that are included out of the box with Ionic.",
+      title: "Terimakasih dari Batavia!",
+      description: "Nama <b>Batavia</b> berasal dari kependekan <em>Batavia Visualization App</em>.",
       image: "img/ica-slidebox-img-1.png"
     },
     {
-      title: "What is Ionic?",
-      description: "<b>Ionic Framework</b> is an open source SDK that enables developers to build high quality mobile apps with web technologies like HTML, CSS, and JavaScript.",
+      title: "Apa itu Batavia?",
+      description: "<b>Batavia</b> adalah aplikasi visualisasi data terbuka DKI Jakarta, khususnya untuk topik ekonomi dan keuangan daerah.",
       image: "img/ica-slidebox-img-2.png"
     },
     {
-      title: "What is Ionic Platform?",
-      description: "The <b>Ionic Platform</b> is a cloud platform for managing and scaling Ionic apps with integrated services like push notifications, native builds, user auth, and live updating.",
+      title: "Kenapa Batavia?",
+      description: "Aplikasi <b>Batavia</b> mendukung <em>multiplatform</em>, selain itu bebas digunakan. Misi Batavia adalah memudahkan penggunanya melihat data secara visual.",
       image: "img/ica-slidebox-img-3.png"
     }
   ];

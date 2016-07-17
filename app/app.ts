@@ -29,8 +29,6 @@ class MyApp {
       { title: 'Topik Ekonomi Mikro', component: MikroMenuPage, icon: 'pizza' },
       { title: 'Kredit', component: CreditPage, icon: 'paper' },
       { title: 'Perkenalan', component: IntroPage, icon: 'megaphone' },
-      // { title: 'Getting Started', component: GettingStartedPage, icon: 'home' },
-      // { title: 'List', component: ListPage, icon: 'home' }
     ];
 
   }

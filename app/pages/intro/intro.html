@@ -1,4 +1,4 @@
-<ion-navbar *navbar hideBackButton class="show-navbar">
+<ion-navbar *navbar hideBackButton class="show-navbar" primary>
   <ion-title>Perkenalan</ion-title>
 </ion-navbar>
 <ion-content class="tutorial-page">
@@ -7,7 +7,7 @@
     <ion-slide *ngFor="let slide of slides">
       <ion-toolbar>
         <ion-buttons end>
-          <button (click)="goMainPage()">Skip</button>
+          <button (click)="goMainPage()">Lewat</button>
         </ion-buttons>
       </ion-toolbar>
       <img [src]="slide.image" class="slide-image"/>
@@ -19,9 +19,9 @@
       <ion-toolbar>
       </ion-toolbar>
       <img src="img/ica-slidebox-img-4.png" class="slide-image"/>
-      <h2 class="slide-title">Ready to Play?</h2>
+      <h2 class="slide-title">Mulai Gunakan Aplikasi!!</h2>
       <button large clear (click)="goMainPage()">
-        Continue
+        Mulai
         <ion-icon name="arrow-forward"></ion-icon>
       </button>
     </ion-slide>

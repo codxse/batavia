@@ -13,7 +13,7 @@ import {Options} from '../../providers/options';
 @Component({
   directives: [nvD3],
   providers: [DataService, Options],
-  templateUrl: 'build/pages/nilai-impor-produk-histogram/nilai-impor-produk-histogram.html',
+  templateUrl: 'build/pages/harga-pangan-konsumen-histogram/harga-pangan-konsumen-histogram.html',
 })
 export class HargaPanganKonsumenHistogramPage {
   private url: String;

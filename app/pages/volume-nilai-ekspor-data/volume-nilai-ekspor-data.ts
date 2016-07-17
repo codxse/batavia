@@ -48,7 +48,9 @@ export class VolumeNilaiEksporDataPage {
             return 'Mr. Picolo';
           }
         )(object.grup),
-        name: object.komoditas
+        name: object.komoditas,
+        nilai: object.nilai,
+        volume: object.volume
       });
     }
     return objects;
