@@ -3,7 +3,6 @@ import {NavController} from 'ionic-angular';
 import {DataService} from '../../providers/data-service/data-service';
 import {nvD3} from '../../ng2-nvd3';
 import {Options} from '../../providers/options';
-declare let d3: any;
 
 @Component({
   directives: [nvD3],

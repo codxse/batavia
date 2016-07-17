@@ -288,4 +288,59 @@ export class Options{
     }
   }
 
+  loadOptionCluster(xAxisLabel, yAxisLabel) {
+    return {
+      chart: {
+        type: 'scatterChart',
+        height: 450,
+        margin: {
+          top: 50,
+          right: 50,
+          bottom: 50,
+          left: 50
+        },
+        showLegend: true,
+        showLabels: true,
+        // forceY: [10, 40],
+        // forceX: [50, 120],
+        color: d3.scale.category10().range(),
+        scatter: {
+          onlyCircles: true
+        },
+        showDistX: true,
+        showDistY: true,
+        duration: 350,
+        // forceX: [0, 1600000],
+        // forceY: [0, 8000000],
+        xAxis: {
+          axisLabel: xAxisLabel,
+          tickFormat: function(d) {
+            var prefix = d3.formatPrefix(d);
+            return prefix.scale(d) + prefix.symbol;
+          },
+          showMaxMin: false
+        },
+        yAxis: {
+          axisLabel: yAxisLabel,
+          tickFormat: function(d) {
+            var prefix = d3.formatPrefix(d);
+            return prefix.scale(d) + prefix.symbol;
+          },
+          showMaxMin: false,
+          axisLabelDistance: -15
+        },
+        zoom: {
+          //NOTE: All attributes below are optional
+          enabled: true,
+          scaleExtent: [1, 10],
+          useFixedDomain: true,
+          useNiceScale: false,
+          horizontalOff: false,
+          verticalOff: false,
+          unzoomEventType: 'dblclick.zoom'
+        }
+      }
+    }
+  }
+
 }
