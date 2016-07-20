@@ -18,3 +18,11 @@
   stroke-width: 5px;
   fill-opacity: 1 !important;
 }
+
+ion-tab {
+transform: translateY(-200%);
+}
+
+ion-tab.show-tab {
+transform: translateY(0);
+}

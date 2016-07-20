@@ -17,9 +17,11 @@ import {IkhtisarStatistikPiePage} from '../ikhtisar-statistik-pie/ikhtisar-stati
 `})
 class TabTextPage {
   isAndroid: boolean = false;
+  isIOS: boolean = false;
 
   constructor(platform: Platform) {
     this.isAndroid = platform.is('android');
+    this.isIOS = platform.is('iOS');
   }
 }
 
