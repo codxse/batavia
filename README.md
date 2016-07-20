@@ -27,11 +27,11 @@ Dynamic mobile visualization app for Jakarta open data.
 
 ### Demo
 
-![alt text]("https://raw.githubusercontent.com/codxse/batavia/master/demo/gif1.gif")
+![alt text]("./demo/gif1.gif?raw=true")
 
-![alt text]("https://raw.githubusercontent.com/codxse/batavia/master/demo/gif2.gif")
+![alt text]("./demo/gif2.gif?raw=true")
 
-![alt text]("https://raw.githubusercontent.com/codxse/batavia/master/demo/gif3.gif")
+![alt text]("./demo/gif3.gif?raw=true")
 
 ### License
 MIT (2016)
