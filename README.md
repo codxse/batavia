@@ -1,6 +1,6 @@
 # Batavia
 
-Dynamic mobile visualization app for Jakarta open data.
+Inspired by GNU and PHP name, "Batavia" stands for Batavia Visualization App a dynamic mobile visualization app for Jakarta open data (Ekonomi and Keuangan Daerah for now).
 
 ### How to Install on PC
 ```
