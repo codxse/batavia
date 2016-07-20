@@ -28,11 +28,11 @@ Dynamic mobile visualization app for Jakarta open data.
 ### Demo
 
 <div style="display:inline">
-<img src="demo/gif1.gif" alt="Drawing" style="width: 250px; padding: 5px"/>
+<img src="demo/gif1.gif" alt="Drawing" style="width: 220px; padding: 5px"/>
 
-<img src="demo/gif2.gif" alt="Drawing" style="width: 250px; padding: 5px"/>
+<img src="demo/gif2.gif" alt="Drawing" style="width: 220px; padding: 5px"/>
 
-<img src="demo/gif3.gif" alt="Drawing" style="width: 250px; padding: 5px"/></div>
+<img src="demo/gif3.gif" alt="Drawing" style="width: 220px; padding: 5px"/></div>
 
 ### License
 MIT (2016)
