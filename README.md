@@ -27,11 +27,11 @@ Dynamic mobile visualization app for Jakarta open data.
 
 ### Demo
 
-![alt text]("./demo/gif1.gif?raw=true")
+![alt text](demo/gif1.gif?raw=true)
 
-![alt text]("./demo/gif2.gif?raw=true")
+![alt text](demo/gif2.gif?raw=true)
 
-![alt text]("./demo/gif3.gif?raw=true")
+![alt text](demo/gif3.gif?raw=true)
 
 ### License
 MIT (2016)
